@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mlsa_amu/screens/home_page.dart';
+import 'package:mlsa_amu/utils.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -27,6 +28,8 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    Utils.height = MediaQuery.of(context).size.height;
+    Utils.width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -44,8 +47,8 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              height: MediaQuery.of(context).size.height * 0.35,
-              width: MediaQuery.of(context).size.width,
+              height: Utils.height * 0.35,
+              width: Utils.width,
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: NetworkImage(
@@ -57,15 +60,15 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(
-                MediaQuery.of(context).size.width * 0.03,
-                MediaQuery.of(context).size.width * 0.1,
-                MediaQuery.of(context).size.width * 0.03,
-                MediaQuery.of(context).size.width * 0.05,
+                Utils.width * 0.03,
+                Utils.width * 0.1,
+                Utils.width * 0.03,
+                Utils.width * 0.05,
               ),
               child: Text(
                 'Microsoft Learn Student Ambassador',
                 style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.045,
+                  fontSize: Utils.width * 0.045,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff1f395e),
                 ),
@@ -73,15 +76,15 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(
-                MediaQuery.of(context).size.width * 0.03,
-                MediaQuery.of(context).size.width * 0.03,
-                MediaQuery.of(context).size.width * 0.03,
-                MediaQuery.of(context).size.width * 0.00,
+                Utils.width * 0.03,
+                Utils.width * 0.03,
+                Utils.width * 0.03,
+                Utils.width * 0.00,
               ),
               child: Text(
                 'Abiding by the motto',
                 style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.03,
+                  fontSize: Utils.width * 0.03,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff1f395e),
                 ),
@@ -89,15 +92,15 @@ class _SplashScreenState extends State<SplashScreen> {
             ),
             Padding(
               padding: EdgeInsets.fromLTRB(
-                MediaQuery.of(context).size.width * 0.03,
-                MediaQuery.of(context).size.width * 0.00,
-                MediaQuery.of(context).size.width * 0.03,
-                MediaQuery.of(context).size.width * 0.05,
+                Utils.width * 0.03,
+                Utils.width * 0.00,
+                Utils.width * 0.03,
+                Utils.width * 0.05,
               ),
               child: Text(
                 '"Be a force for good-locally and globally"',
                 style: TextStyle(
-                  fontSize: MediaQuery.of(context).size.width * 0.03,
+                  fontSize: Utils.width * 0.03,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff1f395e),
                 ),
