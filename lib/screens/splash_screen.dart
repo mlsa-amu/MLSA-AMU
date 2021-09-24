@@ -1,15 +1,47 @@
 import 'package:flutter/material.dart';
+import 'package:mlsa_amu/screens/home_page.dart';
+import 'package:mlsa_amu/utils.dart';
 
-import '../utils.dart';
+class SplashScreen extends StatefulWidget {
+  @override
+  _SplashScreenState createState() => _SplashScreenState();
+}
 
-class Splash extends StatelessWidget {
+class _SplashScreenState extends State<SplashScreen> {
+  @override
+  void initState() {
+    splashWait();
+    super.initState();
+  }
+
+  void splashWait() {
+    Future.delayed(Duration(seconds: 3)).then((onValue) {
+      Navigator.pushAndRemoveUntil(
+        context,
+        MaterialPageRoute(
+          builder: (_) => HomePage(),
+        ),
+        (route) => false,
+      );
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     Utils.height = MediaQuery.of(context).size.height;
     Utils.width = MediaQuery.of(context).size.width;
     return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            colors: [
+              Colors.blue,
+              Colors.white,
+            ],
+          ),
+        ),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
