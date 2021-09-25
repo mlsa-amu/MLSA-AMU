@@ -31,7 +31,7 @@ Enter the below command in the directory you want to clone the project in:
 
  git clone https://github.com/your-username/MLSA-AMU.git 
  
- cd MLSA_AMU
+ cd MLSA-AMU
 
 ```
 
