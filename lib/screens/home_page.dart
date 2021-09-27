@@ -1,19 +1,35 @@
 import 'package:flutter/material.dart';
+import 'package:mlsa_amu/screens/navigation_drawer.dart';
 
 class HomePage extends StatelessWidget {
-  const HomePage({Key? key}) : super(key: key);
-
+  HomePage({Key? key}) : super(key: key);
+  final globalKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      key: globalKey,
+      drawer: NavigationDrawer(),
       body: CustomPaint(
         painter: Painter(),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
             Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
+                Padding(
+                  padding: const EdgeInsets.fromLTRB(0, 25, 7, 0),
+                  child: IconButton(
+                    onPressed: () {
+                      globalKey.currentState!.openDrawer();
+                    },
+                    icon: Icon(
+                      Icons.menu,
+                      color: Colors.white,
+                    ),
+                  ),
+                ),
                 Container(
                   child: ClipRRect(
                     borderRadius: BorderRadius.only(
@@ -22,7 +38,7 @@ class HomePage extends StatelessWidget {
                     child: Image.asset(
                       "assets/images/home.jpeg",
                       fit: BoxFit.cover,
-                      width: MediaQuery.of(context).size.width * 0.95,
+                      width: MediaQuery.of(context).size.width * 0.85,
                       height: MediaQuery.of(context).size.height * 0.38,
                     ),
                   ),
@@ -96,7 +112,8 @@ class Painter extends CustomPainter {
     Path ovalPath = Path();
     ovalPath.moveTo(0, 0);
     // paint a curve from current position to middle of the screen
-    ovalPath.quadraticBezierTo(-width * 0.5, height * 0.55, width, height * 0.2);
+    ovalPath.quadraticBezierTo(
+        -width * 0.5, height * 0.55, width, height * 0.2);
 
     // draw remaining line to bottom left side
     ovalPath.lineTo(width, 0);
