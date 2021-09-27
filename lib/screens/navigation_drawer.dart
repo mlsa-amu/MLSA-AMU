@@ -13,7 +13,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     'Events',
     'Gallery',
     'Team',
-    'App Contributors',
+    'Contributors',
     'Contact Us'
   ];
   List sideItemsIcon = [
@@ -35,7 +35,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                 Colors.blue.shade900,
+                Colors.blue.shade900,
                 Colors.white,
               ],
             ),
@@ -73,7 +73,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                           onPressed: () {},
                           icon: Icon(
                             sideItemsIcon[index],
-                            color: Colors.blue.shade900,
+                            color: Colors.white,
                           ),
                           label: Text(
                             sideItems[index],
