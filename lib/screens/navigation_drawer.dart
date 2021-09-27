@@ -1,4 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:mlsa_amu/screens/contact_screen.dart';
+import 'package:mlsa_amu/screens/contributors_screen.dart';
+import 'package:mlsa_amu/screens/events_screen.dart';
+import 'package:mlsa_amu/screens/gallery_screen.dart';
+import 'package:mlsa_amu/screens/home_page.dart';
+import 'package:mlsa_amu/screens/team_screen.dart';
 
 import '../utils.dart';
 
@@ -15,6 +21,14 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
     'Team',
     'Contributors',
     'Contact Us'
+  ];
+  List<Widget> navigateTo = [
+    HomePage(),
+    EventsScreen(),
+    GalleryScreen(),
+    TeamScreen(),
+    ContributorsScreen(),
+    ContactScreen(),
   ];
   List sideItemsIcon = [
     Icons.home,
@@ -70,7 +84,16 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
                         TextButton.icon(
-                          onPressed: () {},
+                          onPressed: () {
+                            if (sideItems[index] != "Home") {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (_) => navigateTo[index],
+                                ),
+                              );
+                            }
+                          },
                           icon: Icon(
                             sideItemsIcon[index],
                             color: Colors.white,
