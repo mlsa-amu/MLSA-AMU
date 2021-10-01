@@ -20,9 +20,18 @@ class TeamScreen extends StatelessWidget {
         ),
       ),
       child: Scaffold(
+        appBar: AppBar(
+          title: Text(
+            'Team',
+            style: TextStyle(color: Colors.white),
+            textAlign: TextAlign.left,
+          ),
+          backgroundColor: Colors.transparent,
+          elevation: 0,
+        ),
         backgroundColor: Colors.transparent,
         body: SafeArea(
-          minimum: EdgeInsets.only(top: width * 0.241),
+          minimum: EdgeInsets.only(top: width * 0.051),
           child: ListView.builder(
             itemCount: memberDetails.length,
             itemBuilder: (context, index) {
