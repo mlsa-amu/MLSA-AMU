@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mlsa_amu/models/events_images.dart';
 
 class EventsScreen extends StatelessWidget {
   const EventsScreen({Key? key}) : super(key: key);
@@ -39,11 +40,51 @@ class EventsScreen extends StatelessWidget {
           ),
         ),
       ),
-      body: Center(
-        child: Text(
-          "Events Screen\nNeed to be done",
-          textAlign: TextAlign.center,
+      body: Container(
+        padding: EdgeInsets.only(left: 10, right: 10),
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF219653), Color(0xFF792ADC)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
         ),
+        child: Center(
+            child: ListView.builder(
+              padding: EdgeInsets.only(top: 20, bottom: 20),
+          itemBuilder: (BuildContext context, int index) {
+            return Padding(
+              padding: EdgeInsets.only(bottom: 25),
+              child: Stack(children: [
+                ClipRRect(
+                    borderRadius: BorderRadius.circular(20),
+                    child: ColorFiltered(
+                      colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.6), BlendMode.dstATop),
+                      child: Image.asset(
+                          "assets/images/${eventsImages[index].image}"),
+                    )),
+                Positioned(
+                  bottom: 20,
+                  left: 20,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        eventsImages[index].title,
+                        style: TextStyle(color: Colors.white, fontSize: 24),
+                      ),
+                      Text(
+                        eventsImages[index].subTitle,
+                        style: TextStyle(color: Colors.white),
+                      )
+                    ],
+                  ),
+                )
+              ]),
+            );
+          },
+          itemCount: eventsImages.length,
+        )),
       ),
     );
   }
