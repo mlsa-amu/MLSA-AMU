@@ -8,6 +8,10 @@ class MemberDetailsCard extends StatelessWidget {
   MemberDetailsCard({required this.memberdetails});
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
+    double height = MediaQuery.of(context).size.height;
+    print(MediaQuery.of(context).size.width);
+    print(MediaQuery.of(context).size.height);
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
@@ -22,55 +26,52 @@ class MemberDetailsCard extends StatelessWidget {
               children: <Widget>[
                 Image.asset(
                   memberdetails.assetImage,
-                  width: 180,
-                  height: 200,
+                  width: width * 0.4583,
+                  height: height * 0.249,
                 ),
                 Spacer(),
-                Column(
-                    crossAxisAlignment: CrossAxisAlignment.end,
-                    children: <Widget>[
-                      SizedBox(
-                        height: 10,
+                Column(crossAxisAlignment: CrossAxisAlignment.end, children: <
+                    Widget>[
+                  Padding(
+                    padding:
+                        EdgeInsets.fromLTRB(0, width * 0.012, 0, width * 0.006),
+                    child: Text(
+                      memberdetails.name,
+                      style:
+                          TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  Padding(
+                    padding: EdgeInsets.fromLTRB(0, 0, 0, height * 0.1),
+                    child: Text(
+                      memberdetails.position,
+                      style: TextStyle(fontSize: 15),
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Padding(
+                        padding: EdgeInsets.fromLTRB(0, 0, width * 0.051, 0),
+                        child: IconButton(
+                          icon: Icon(FontAwesomeIcons.githubSquare),
+                          iconSize: 40,
+                          onPressed: () {
+                            _launchURLBrowser(memberdetails.githubUrl);
+                          },
+                        ),
                       ),
-                      Text(
-                        memberdetails.name,
-                        style: TextStyle(
-                            fontSize: 22, fontWeight: FontWeight.bold),
+                      IconButton(
+                        icon: Icon(FontAwesomeIcons.linkedin),
+                        color: Colors.blue[700],
+                        iconSize: 40,
+                        onPressed: () {
+                          _launchURLBrowser(memberdetails.linkedinUrl);
+                        },
                       ),
-                      SizedBox(
-                        height: 5,
-                      ),
-                      Text(
-                        memberdetails.position,
-                        style: TextStyle(fontSize: 15),
-                      ),
-                      SizedBox(
-                        height: 65,
-                      ),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                        children: [
-                          IconButton(
-                            icon: Icon(FontAwesomeIcons.githubSquare),
-                            iconSize: 40,
-                            onPressed: () {
-                              _launchURLBrowser(memberdetails.githubUrl);
-                            },
-                          ),
-                          SizedBox(
-                            width: 20,
-                          ),
-                          IconButton(
-                            icon: Icon(FontAwesomeIcons.linkedin),
-                            color: Colors.blue[700],
-                            iconSize: 40,
-                            onPressed: () {
-                              _launchURLBrowser(memberdetails.linkedinUrl);
-                            },
-                          ),
-                        ],
-                      ),
-                    ]),
+                    ],
+                  ),
+                ]),
               ],
             ),
           )),

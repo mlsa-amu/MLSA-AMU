@@ -10,16 +10,14 @@ class TeamScreen extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
-            begin: Alignment.bottomCenter,
-            end: Alignment.topCenter,
-            colors: [
-              Color(0xFF4D1892),
-              Color(0xFF1774CA),
-            ],
-            stops: [
-              0.3,
-              0.8
-            ]),
+          begin: Alignment.topLeft,
+          end: Alignment.bottomLeft,
+          colors: [
+            Colors.blue.shade900,
+            Color(0XFF792adc),
+            Color(0XFF792adc),
+          ],
+        ),
       ),
       child: Scaffold(
           backgroundColor: Colors.transparent,
