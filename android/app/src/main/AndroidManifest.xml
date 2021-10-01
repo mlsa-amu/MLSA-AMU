@@ -1,6 +1,6 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.mlsa_amu">
-   <application
+    <application
         android:label="mlsa_amu"
         android:icon="@mipmap/ic_launcher">
         <activity
