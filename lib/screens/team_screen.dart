@@ -20,15 +20,17 @@ class TeamScreen extends StatelessWidget {
         ),
       ),
       child: Scaffold(
-          backgroundColor: Colors.transparent,
-          body: SafeArea(
-              minimum: EdgeInsets.only(top: 90),
-              child: ListView.builder(
-                  itemCount: memberDetails.length,
-                  itemBuilder: (context, index) {
-                    return MemberDetailsCard(
-                        memberdetails: memberDetails[index]);
-                  }))),
+        backgroundColor: Colors.transparent,
+        body: SafeArea(
+          minimum: EdgeInsets.only(top: 90),
+          child: ListView.builder(
+            itemCount: memberDetails.length,
+            itemBuilder: (context, index) {
+              return MemberDetailsCard(memberdetails: memberDetails[index]);
+            },
+          ),
+        ),
+      ),
     );
   }
 }

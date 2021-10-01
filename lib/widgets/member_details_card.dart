@@ -10,28 +10,27 @@ class MemberDetailsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    print(MediaQuery.of(context).size.width);
-    print(MediaQuery.of(context).size.height);
     return Padding(
       padding: const EdgeInsets.all(10.0),
       child: Container(
-          decoration: BoxDecoration(
-            color: Colors.white,
-          ),
-          height: MediaQuery.of(context).size.height * 0.26,
-          width: MediaQuery.of(context).size.width * 0.9,
-          child: Padding(
-            padding: const EdgeInsets.fromLTRB(10, 4, 10, 10),
-            child: Row(
-              children: <Widget>[
-                Image.asset(
-                  memberdetails.assetImage,
-                  width: width * 0.4583,
-                  height: height * 0.249,
-                ),
-                Spacer(),
-                Column(crossAxisAlignment: CrossAxisAlignment.end, children: <
-                    Widget>[
+        decoration: BoxDecoration(
+          color: Colors.white,
+        ),
+        height: height * 0.26,
+        width: width * 0.9,
+        child: Padding(
+          padding: const EdgeInsets.fromLTRB(10, 4, 10, 10),
+          child: Row(
+            children: <Widget>[
+              Image.asset(
+                memberdetails.assetImage,
+                width: width * 0.4583,
+                height: height * 0.249,
+              ),
+              Spacer(),
+              Column(
+                crossAxisAlignment: CrossAxisAlignment.end,
+                children: <Widget>[
                   Padding(
                     padding:
                         EdgeInsets.fromLTRB(0, width * 0.012, 0, width * 0.006),
@@ -71,10 +70,12 @@ class MemberDetailsCard extends StatelessWidget {
                       ),
                     ],
                   ),
-                ]),
-              ],
-            ),
-          )),
+                ],
+              ),
+            ],
+          ),
+        ),
+      ),
     );
   }
 }
