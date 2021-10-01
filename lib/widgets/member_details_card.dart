@@ -10,8 +10,9 @@ class MemberDetailsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
+
     return Padding(
-      padding: const EdgeInsets.all(10.0),
+      padding: EdgeInsets.all(width * 0.0254),
       child: Container(
         decoration: BoxDecoration(
           color: Colors.white,
@@ -19,7 +20,8 @@ class MemberDetailsCard extends StatelessWidget {
         height: height * 0.26,
         width: width * 0.9,
         child: Padding(
-          padding: const EdgeInsets.fromLTRB(10, 4, 10, 10),
+          padding: EdgeInsets.fromLTRB(
+              width * 0.0254, width * 0.01, width * 0.0254, width * 0.0254),
           child: Row(
             children: <Widget>[
               Image.asset(

@@ -4,9 +4,9 @@ import 'package:mlsa_amu/widgets/member_details_card.dart';
 
 class TeamScreen extends StatelessWidget {
   const TeamScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
+    double width = MediaQuery.of(context).size.width;
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -22,7 +22,7 @@ class TeamScreen extends StatelessWidget {
       child: Scaffold(
         backgroundColor: Colors.transparent,
         body: SafeArea(
-          minimum: EdgeInsets.only(top: 90),
+          minimum: EdgeInsets.only(top: width * 0.241),
           child: ListView.builder(
             itemCount: memberDetails.length,
             itemBuilder: (context, index) {
