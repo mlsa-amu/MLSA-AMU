@@ -101,6 +101,7 @@ class _SplashScreenState extends State<SplashScreen> {
                 '"Be a force for good-locally and globally"',
                 style: TextStyle(
                   fontSize: Utils.width * 0.03,
+                  fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff1f395e),
                 ),
