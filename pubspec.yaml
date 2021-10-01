@@ -50,6 +50,9 @@ flutter:
     - assets/images/blank_photo.jpg
     - assets/images/home.jpeg
     - assets/images/mlsa-logo.png
+    - assets/images/hackathon.png
+    - assets/images/hacktober.png
+    - assets/images/opensource.png
 
 
   #   - images/a_dot_ham.jpeg
