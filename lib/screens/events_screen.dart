@@ -44,14 +44,17 @@ class EventsScreen extends StatelessWidget {
         padding: EdgeInsets.only(left: 10, right: 10),
         decoration: BoxDecoration(
           gradient: LinearGradient(
-            colors: [Color(0xFF219653), Color(0xFF792ADC)],
+            colors: [
+              Color(0XFF1E72C1),
+              Color(0XFF792adc),
+            ],
             begin: Alignment.topCenter,
             end: Alignment.bottomCenter,
           ),
         ),
         child: Center(
             child: ListView.builder(
-              padding: EdgeInsets.only(top: 20, bottom: 20),
+          padding: EdgeInsets.only(top: 20, bottom: 20),
           itemBuilder: (BuildContext context, int index) {
             return Padding(
               padding: EdgeInsets.only(bottom: 25),
@@ -59,7 +62,8 @@ class EventsScreen extends StatelessWidget {
                 ClipRRect(
                     borderRadius: BorderRadius.circular(20),
                     child: ColorFiltered(
-                      colorFilter: ColorFilter.mode(Colors.black.withOpacity(0.6), BlendMode.dstATop),
+                      colorFilter: ColorFilter.mode(
+                          Colors.black.withOpacity(0.6), BlendMode.dstATop),
                       child: Image.asset(
                           "assets/images/${eventsImages[index].image}"),
                     )),
