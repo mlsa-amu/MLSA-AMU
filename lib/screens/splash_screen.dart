@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mlsa_amu/screens/home_page.dart';
-import 'package:mlsa_amu/utils.dart';
+import 'package:mlsa_amu/utils/size_config.dart';
 
 class SplashScreen extends StatefulWidget {
   @override
@@ -28,8 +28,7 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
-    Utils.height = MediaQuery.of(context).size.height;
-    Utils.width = MediaQuery.of(context).size.width;
+    SizeConfig.initOnStartUp(context);
     return Scaffold(
       body: Container(
         decoration: BoxDecoration(
@@ -47,60 +46,54 @@ class _SplashScreenState extends State<SplashScreen> {
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Container(
-              height: Utils.height * 0.35,
-              width: Utils.width,
+              height: SizeConfig.screenHeight * 0.35,
+              width: SizeConfig.screenWidth,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(
-                    'https://res.cloudinary.com/vidita/image/upload/v1625389955/logo_kayvjr.png',
+                  image: AssetImage(
+                    "assets\images\mlsa-logo.png",
                   ),
                   //fit: BoxFit.cover,
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(
-                Utils.width * 0.03,
-                Utils.width * 0.1,
-                Utils.width * 0.03,
-                Utils.width * 0.05,
+              padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.safeBlockHorizontal * 4,
+                vertical: SizeConfig.safeBlockVertical * 3,
               ),
               child: Text(
                 'Microsoft Learn Student Ambassador',
+                textAlign: TextAlign.center,
                 style: TextStyle(
-                  fontSize: Utils.width * 0.045,
+                  fontSize: SizeConfig.baseFontSize * 4.5,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff1f395e),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(
-                Utils.width * 0.03,
-                Utils.width * 0.03,
-                Utils.width * 0.03,
-                Utils.width * 0.00,
+              padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.safeBlockHorizontal * 4,
               ),
               child: Text(
                 'Abiding by the motto',
                 style: TextStyle(
-                  fontSize: Utils.width * 0.03,
+                  fontSize: SizeConfig.baseFontSize * 3,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff1f395e),
                 ),
               ),
             ),
             Padding(
-              padding: EdgeInsets.fromLTRB(
-                Utils.width * 0.03,
-                Utils.width * 0.00,
-                Utils.width * 0.03,
-                Utils.width * 0.05,
+              padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.safeBlockHorizontal * 4,
               ),
               child: Text(
                 '"Be a force for good-locally and globally"',
                 style: TextStyle(
-                  fontSize: Utils.width * 0.03,
+                  fontSize: SizeConfig.baseFontSize * 3,
+                  fontStyle: FontStyle.italic,
                   fontWeight: FontWeight.w700,
                   color: Color(0xff1f395e),
                 ),

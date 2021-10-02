@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "389978677869",
+    "project_id": "mlsa-amu",
+    "storage_bucket": "mlsa-amu.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:389978677869:android:83a403b116e7546c1cd564",
+        "android_client_info": {
+          "package_name": "com.example.mlsa_amu"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "389978677869-9sbunrljvofq6fu25bn3a8oolgd8rtn7.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBY534uXOwxMy6KKRzArDuFGx5lswoQYe0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "389978677869-9sbunrljvofq6fu25bn3a8oolgd8rtn7.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
