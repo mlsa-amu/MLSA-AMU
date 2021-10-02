@@ -1,5 +1,3 @@
-import 'dart:math';
-
 import 'package:flutter/material.dart';
 
 class EventsScreen extends StatelessWidget {
@@ -7,8 +5,6 @@ class EventsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
-    double width = MediaQuery.of(context).size.width;
     return Container(
       decoration: BoxDecoration(
         gradient: LinearGradient(
@@ -32,16 +28,6 @@ class EventsScreen extends StatelessWidget {
           ),
           backgroundColor: Colors.transparent,
           elevation: 0,
-          actions: [
-            Container(
-              margin: const EdgeInsets.all(8),
-              child: Image.asset(
-                "assets/images/mlsa-logo.png",
-                height: min(width * 0.14, height * 0.070),
-                width: min(width * 0.14, height * 0.070),
-              ),
-            )
-          ],
         ),
         body: Center(
           child: Text(

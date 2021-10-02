@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mlsa_amu/Utils/size_config.dart';
 import 'package:mlsa_amu/screens/navigation_drawer.dart';
 
 class HomePage extends StatelessWidget {
@@ -19,7 +20,9 @@ class HomePage extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Padding(
-                  padding: const EdgeInsets.fromLTRB(0, 25, 7, 0),
+                  padding: EdgeInsets.only(
+                    top: SizeConfig.safeBlockVertical * 3,
+                  ),
                   child: IconButton(
                     onPressed: () {
                       globalKey.currentState!.openDrawer();
@@ -38,8 +41,8 @@ class HomePage extends StatelessWidget {
                     child: Image.asset(
                       "assets/images/home.jpeg",
                       fit: BoxFit.cover,
-                      width: MediaQuery.of(context).size.width * 0.85,
-                      height: MediaQuery.of(context).size.height * 0.38,
+                      width: SizeConfig.screenWidth * 0.8,
+                      height: SizeConfig.screenHeight * 0.4,
                     ),
                   ),
                 ),
@@ -49,35 +52,42 @@ class HomePage extends StatelessWidget {
               height: 40,
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
+              padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.safeBlockHorizontal * 6,
+              ),
               child: Text(
                 'MLSA AMU',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 35,
+                  fontSize: SizeConfig.baseFontSize * 9,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25),
+              padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.safeBlockHorizontal * 6,
+              ),
               child: Text(
                 'A community by the students, for the students',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: 18,
+                  fontSize: SizeConfig.baseFontSize * 5,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ),
             Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 25, vertical: 15),
+              padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.safeBlockHorizontal * 6,
+                vertical: SizeConfig.safeBlockVertical * 2,
+              ),
               child: Text(
                 'A technical community that aims to get as many student developers together as possible in order to create a robust environment that fosters collaborative learning.',
                 style: TextStyle(
                   height: 1.5,
                   color: Colors.white,
-                  fontSize: 20,
+                  fontSize: SizeConfig.baseFontSize * 5.2,
                   fontWeight: FontWeight.w300,
                 ),
               ),
@@ -113,7 +123,7 @@ class Painter extends CustomPainter {
     ovalPath.moveTo(0, 0);
     // paint a curve from current position to middle of the screen
     ovalPath.quadraticBezierTo(
-        -width * 0.5, height * 0.55, width, height * 0.2);
+        -width * 0.5, height * 0.45, width, height * 0.2);
 
     // draw remaining line to bottom left side
     ovalPath.lineTo(width, 0);
