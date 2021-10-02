@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mlsa_amu/Utils/size_config.dart';
 import 'package:mlsa_amu/models/team_details.dart';
+import 'package:mlsa_amu/utils/size_config.dart';
 import 'package:mlsa_amu/widgets/member_details_card.dart';
 
 class TeamScreen extends StatelessWidget {

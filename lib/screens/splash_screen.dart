@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mlsa_amu/Utils/size_config.dart';
 import 'package:mlsa_amu/screens/home_page.dart';
+import 'package:mlsa_amu/utils/size_config.dart';
 
 class SplashScreen extends StatefulWidget {
   @override

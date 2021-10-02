@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:mlsa_amu/Utils/size_config.dart';
 import 'package:mlsa_amu/screens/navigation_drawer.dart';
+import 'package:mlsa_amu/utils/size_config.dart';
 
 class HomePage extends StatelessWidget {
   HomePage({Key? key}) : super(key: key);
