@@ -1,3 +1,5 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 
 class EventsScreen extends StatelessWidget {
@@ -5,44 +7,48 @@ class EventsScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    var height = MediaQuery.of(context).size.height;
+    var width = MediaQuery.of(context).size.width;
+    print(width * 0.13);
     return Scaffold(
-      appBar: PreferredSize(
-        preferredSize: Size(MediaQuery.of(context).size.width, 150),
-        child: Container(
-          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-          child: Padding(
-            padding: EdgeInsets.only(left: 20, top: 5, bottom: 5, right: 10),
-            child: Row(
-              children: [
-                Text(
-                  "Events",
-                  style: TextStyle(
-                    fontSize: 26,
-                    fontWeight: FontWeight.w500,
-                    color: Colors.white,
-                  ),
-                ),
-                Spacer(),
-                Image.asset(
-                  "assets/images/mlsa-logo.png",
-                  height: 50,
-                )
-              ],
-            ),
-          ),
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Color(0xFF219653), Color(0xFF792ADC)],
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-            ),
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        toolbarHeight: height * 0.075,
+        title: const Text(
+          "Events",
+          style: TextStyle(
+            fontSize: 26,
+            fontWeight: FontWeight.w500,
+            color: Colors.white,
           ),
         ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+        actions: [
+          Container(
+            margin: const EdgeInsets.all(8),
+            child: Image.asset(
+              "assets/images/mlsa-logo.png",
+              height: min(width * 0.14, height * 0.070),
+              width: min(width * 0.14, height * 0.070),
+              
+            ),
+          )
+        ],
       ),
-      body: Center(
-        child: Text(
-          "Events Screen\nNeed to be done",
-          textAlign: TextAlign.center,
+      body: Container(
+        decoration: BoxDecoration(
+          gradient: LinearGradient(
+            colors: [Color(0xFF219653), Color(0xFF792ADC)],
+            begin: Alignment.topCenter,
+            end: Alignment.bottomCenter,
+          ),
+        ),
+        child: Center(
+          child: Text(
+            "Events Screen\nNeed to be done",
+            textAlign: TextAlign.center,
+          ),
         ),
       ),
     );
