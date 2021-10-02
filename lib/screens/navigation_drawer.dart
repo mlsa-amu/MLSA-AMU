@@ -5,8 +5,7 @@ import 'package:mlsa_amu/screens/events_screen.dart';
 import 'package:mlsa_amu/screens/gallery_screen.dart';
 import 'package:mlsa_amu/screens/home_page.dart';
 import 'package:mlsa_amu/screens/team_screen.dart';
-
-import '../utils.dart';
+import 'package:mlsa_amu/utils/size_config.dart';
 
 class NavigationDrawer extends StatefulWidget {
   @override
@@ -57,10 +56,12 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
           child: Column(
             children: [
               Padding(
-                padding: EdgeInsets.fromLTRB(0, Utils.height * 0.05, 0, 0),
+                padding: EdgeInsets.only(
+                  top: SizeConfig.safeBlockVertical * 6,
+                ),
                 child: Container(
-                  height: Utils.height * 0.25,
-                  width: Utils.width,
+                  height: SizeConfig.screenHeight * 0.25,
+                  width: SizeConfig.screenWidth,
                   decoration: BoxDecoration(
                     image: DecorationImage(
                       image: NetworkImage(
@@ -78,7 +79,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                 itemBuilder: (context, index) {
                   return Container(
                     margin: EdgeInsets.symmetric(
-                      horizontal: Utils.width * 0.05,
+                      horizontal: SizeConfig.safeBlockHorizontal * 6,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -103,7 +104,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                             style: TextStyle(
                               color: Colors.blue.shade900,
                               fontWeight: FontWeight.w600,
-                              fontSize: Utils.width * 0.05,
+                              fontSize: SizeConfig.baseFontSize * 5,
                             ),
                           ),
                         ),
