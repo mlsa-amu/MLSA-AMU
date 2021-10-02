@@ -51,8 +51,8 @@ class _SplashScreenState extends State<SplashScreen> {
               width: Utils.width,
               decoration: BoxDecoration(
                 image: DecorationImage(
-                  image: NetworkImage(
-                    'https://res.cloudinary.com/vidita/image/upload/v1625389955/logo_kayvjr.png',
+                  image: AssetImage(
+                    "assets\images\mlsa-logo.png",
                   ),
                   //fit: BoxFit.cover,
                 ),
