@@ -51,7 +51,7 @@ class _SplashScreenState extends State<SplashScreen> {
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage(
-                    "assets\images\mlsa-logo.png",
+                    "assets/images/mlsa-logo.png",
                   ),
                   //fit: BoxFit.cover,
                 ),
