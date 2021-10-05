@@ -111,9 +111,21 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                     ),
                   ),
                   children: [
-                    Text("Organiser 1"),
-                    Text("Organiser 2"),
-                    Text("Organiser 3"),
+                    Text(
+                      "Organiser 1",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      "Organiser 2",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      "Organiser 3",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ],
                   onExpansionChanged: (value) {
                     setState(
@@ -149,9 +161,21 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                     ),
                   ),
                   children: [
-                    Text("Sponser 1"),
-                    Text("Sponser 2"),
-                    Text("Sponser 3"),
+                    Text(
+                      "Sponser 1",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      "Sponser 2",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      "Sponser 3",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ],
                   onExpansionChanged: (value) {
                     setState(() {
@@ -188,13 +212,41 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                     ),
                   ),
                   children: [
-                    Text("Winner 1"),
-                    Text("Winner 2"),
-                    Text("Winner 3"),
-                    Text("Winner 4"),
-                    Text("Winner 5"),
-                    Text("Winner 6"),
-                    Text("Winner 7"),
+                    Text(
+                      "Winner 1",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      "Winner 2",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      "Winner 3",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      "Winner 4",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      "Winner 5",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      "Winner 6",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white),
+                    ),
+                    Text(
+                      "Winner 7",
+                      textAlign: TextAlign.left,
+                      style: TextStyle(color: Colors.white),
+                    ),
                   ],
                   onExpansionChanged: (value) {
                     if (value) {
