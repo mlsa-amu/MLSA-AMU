@@ -1,4 +1,3 @@
-
 import 'package:flutter/material.dart';
 import 'package:mlsa_amu/models/team_details.dart';
 import 'package:mlsa_amu/utils/size_config.dart';
@@ -45,7 +44,8 @@ class ContributorsScreen extends StatelessWidget {
                 physics: NeverScrollableScrollPhysics(),
                 itemCount: memberDetails.length,
                 itemBuilder: (context, index) {
-                  return ContributorDetailsCard(memberdetails: memberDetails[index]);
+                  return ContributorDetailsCard(
+                      memberdetails: memberDetails[index]);
                 },
               ),
             ],

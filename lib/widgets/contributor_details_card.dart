@@ -9,14 +9,15 @@ class ContributorDetailsCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListTile(
       contentPadding: EdgeInsets.zero,
-      leading: CircleAvatar(radius: 40,
+      leading: CircleAvatar(
+        radius: 40,
         backgroundColor: Colors.white,
-        backgroundImage:
-            AssetImage(memberdetails.assetImage),
+        backgroundImage: AssetImage(memberdetails.assetImage),
       ),
       title: Padding(
         padding: const EdgeInsets.only(bottom: 8.0),
-        child: Text(memberdetails.name, style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
+        child: Text(memberdetails.name,
+            style: TextStyle(color: Colors.white, fontWeight: FontWeight.bold)),
       ),
       subtitle: Text('Count of PRs', style: TextStyle(color: Colors.white)),
     );
