@@ -7,14 +7,7 @@ class TeamService {
     List<MemberDetailModel> membersList = [];
     query = await FirebaseFirestore.instance.collection('team').get();
     query.docs.forEach((element) {
-      MemberDetailModel member = new MemberDetailModel(
-        name: " ",
-        position: " ",
-        githubUrl: " ",
-        linkedinUrl: " ",
-        assetImage: " ",
-      );
-      member.fromMap(element.data());
+      MemberDetailModel member =  MemberDetailModel.fromMap(element.data());
       membersList.add(member);
     });
 

@@ -1,9 +1,9 @@
 class MemberDetailModel {
-  String name ;
-  String position ;
-  String githubUrl ;
-  String linkedinUrl ;
-  String assetImage;
+  String? name;
+  String? position;
+  String? githubUrl;
+  String? linkedinUrl;
+  String? assetImage;
   MemberDetailModel({
     required this.name,
     required this.position,
@@ -22,11 +22,11 @@ class MemberDetailModel {
     return teamMap;
   }
 
-  fromMap(doc) {
-    this.name = doc['name'];
-    this.position = doc['position'];
-    this.githubUrl = doc['githubUrl'];
-    this.linkedinUrl = doc['linkedinUrl'];
-    this.assetImage = doc['image'];
+  MemberDetailModel.fromMap(doc) {
+    name = doc['name'];
+    position = doc['position'];
+    githubUrl = doc['githubUrl'];
+    linkedinUrl = doc['linkedinUrl'];
+    assetImage = doc['image'];
   }
 }
