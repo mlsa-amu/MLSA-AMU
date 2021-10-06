@@ -32,7 +32,7 @@ class MemberDetailsCard extends StatelessWidget {
                 borderRadius: BorderRadius.all(
                   Radius.circular(10),
                 ),
-                child: Image.asset(
+                child: Image.network(
                   memberdetails.assetImage,
                   fit: BoxFit.fill,
                   width: SizeConfig.screenWidth / 3,
