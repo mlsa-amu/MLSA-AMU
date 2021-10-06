@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mlsa_amu/models/event_details.dart';
 import 'package:mlsa_amu/models/events.dart';
 import 'package:mlsa_amu/utils/size_config.dart';
 
@@ -15,7 +16,6 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
   final GlobalKey expansionTileKey = GlobalKey();
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     return Scaffold(
       backgroundColor: Color(0xFF424368),
       body: ListView(
@@ -23,7 +23,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
         // crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Container(
-            height: height * 0.523,
+            height: SizeConfig.screenHeight * 0.523,
             margin: EdgeInsets.fromLTRB(0, SizeConfig.safeBlockVertical * 2.3,
                 0, SizeConfig.safeBlockVertical * 2.5),
             decoration: BoxDecoration(
@@ -36,12 +36,12 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Container(
-                    height: height * 0.56,
-                    width: MediaQuery.of(context).size.width,
+                    height: SizeConfig.screenHeight * 0.56,
+                    width: SizeConfig.screenWidth,
                     child: Image.asset(
                       "assets/images/${eventsImages[widget.index].image}",
                       fit: BoxFit.fill,
-                      width: MediaQuery.of(context).size.width,
+                      width: SizeConfig.screenWidth,
                     ),
                   ),
                 ),
@@ -97,8 +97,8 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                   textColor: Colors.white,
                   collapsedTextColor: Colors.white,
                   trailing: Container(
-                    width: MediaQuery.of(context).size.width * 0.07,
-                    height: MediaQuery.of(context).size.width * 0.07,
+                    width: SizeConfig.screenHeight * 0.04,
+                    height: SizeConfig.screenHeight * 0.04,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       shape: BoxShape.circle,
@@ -110,23 +110,11 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                       color: Colors.black,
                     ),
                   ),
-                  children: [
-                    Text(
-                      "Organiser 1",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "Organiser 2",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "Organiser 3",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
+                  children: Organisers.map((sponsor) => Text(
+                        sponsor,
+                        textAlign: TextAlign.left,
+                        style: TextStyle(color: Colors.white),
+                      )).toList(),
                   onExpansionChanged: (value) {
                     setState(
                       () {
@@ -147,8 +135,8 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                   textColor: Colors.white,
                   collapsedTextColor: Colors.white,
                   trailing: Container(
-                    width: MediaQuery.of(context).size.width * 0.07,
-                    height: MediaQuery.of(context).size.width * 0.07,
+                    width: SizeConfig.screenHeight * 0.04,
+                    height: SizeConfig.screenHeight * 0.04,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       shape: BoxShape.circle,
@@ -160,23 +148,11 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                       color: Colors.black,
                     ),
                   ),
-                  children: [
-                    Text(
-                      "Sponser 1",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "Sponser 2",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "Sponser 3",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
+                  children: Sponsor.map((sponsor) => Text(
+                        sponsor,
+                        textAlign: TextAlign.left,
+                        style: TextStyle(color: Colors.white),
+                      )).toList(),
                   onExpansionChanged: (value) {
                     setState(() {
                       isExpanded2 = !isExpanded2;
@@ -198,8 +174,8 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                   textColor: Colors.white,
                   collapsedTextColor: Colors.white,
                   trailing: Container(
-                    width: MediaQuery.of(context).size.width * 0.07,
-                    height: MediaQuery.of(context).size.width * 0.07,
+                    width: SizeConfig.screenHeight * 0.04,
+                    height: SizeConfig.screenHeight * 0.04,
                     decoration: BoxDecoration(
                       color: Colors.white,
                       shape: BoxShape.circle,
@@ -211,43 +187,11 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                       color: Colors.black,
                     ),
                   ),
-                  children: [
-                    Text(
-                      "Winner 1",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "Winner 2",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "Winner 3",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "Winner 4",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "Winner 5",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "Winner 6",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                    Text(
-                      "Winner 7",
-                      textAlign: TextAlign.left,
-                      style: TextStyle(color: Colors.white),
-                    ),
-                  ],
+                  children: Winners.map((value) => Text(
+                        value,
+                        style: TextStyle(color: Colors.white),
+                        textAlign: TextAlign.left,
+                      )).toList(),
                   onExpansionChanged: (value) {
                     if (value) {
                       _scrollToSelectedContent(
