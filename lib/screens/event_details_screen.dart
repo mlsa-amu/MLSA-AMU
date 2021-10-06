@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mlsa_amu/models/event_details.dart';
 import 'package:mlsa_amu/models/events.dart';
 import 'package:mlsa_amu/utils/size_config.dart';
+import 'package:mlsa_amu/widgets/expansion_tile.dart';
 
 class EventDetailsPage extends StatefulWidget {
   int index;
@@ -24,7 +25,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
         children: [
           Container(
             height: SizeConfig.screenHeight * 0.523,
-            margin: EdgeInsets.fromLTRB(0, SizeConfig.safeBlockVertical * 2.3,
+            margin: EdgeInsets.fromLTRB(0, SizeConfig.safeBlockVertical * 2.9,
                 0, SizeConfig.safeBlockVertical * 2.5),
             decoration: BoxDecoration(
               color: Colors.black,
@@ -85,138 +86,16 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
           ),
           SingleChildScrollView(
             child: Column(
-              children: [
-                ExpansionTile(
-                  title: Text(
-                    "Organizers",
-                    style: TextStyle(
-                      fontSize: SizeConfig.baseFontSize * 5,
-                    ),
-                  ),
-                  leading: Icon(Icons.people, color: Colors.white),
-                  textColor: Colors.white,
-                  collapsedTextColor: Colors.white,
-                  trailing: Container(
-                    width: SizeConfig.screenHeight * 0.04,
-                    height: SizeConfig.screenHeight * 0.04,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      isExpanded1
-                          ? Icons.keyboard_arrow_up_outlined
-                          : Icons.keyboard_arrow_down_outlined,
-                      color: Colors.black,
-                    ),
-                  ),
-                  children: Organisers.map((sponsor) => Text(
-                        sponsor,
-                        textAlign: TextAlign.left,
-                        style: TextStyle(color: Colors.white),
-                      )).toList(),
-                  onExpansionChanged: (value) {
-                    setState(
-                      () {
-                        isExpanded1 = !isExpanded1;
-                      },
-                    );
-                  },
-                ),
-                ExpansionTile(
-                  title: Text(
-                    "Sponsers",
-                    style: TextStyle(
-                      fontSize: SizeConfig.baseFontSize * 5,
-                    ),
-                  ),
-                  leading:
-                      Icon(Icons.favorite_border_outlined, color: Colors.white),
-                  textColor: Colors.white,
-                  collapsedTextColor: Colors.white,
-                  trailing: Container(
-                    width: SizeConfig.screenHeight * 0.04,
-                    height: SizeConfig.screenHeight * 0.04,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      isExpanded2
-                          ? Icons.keyboard_arrow_up_outlined
-                          : Icons.keyboard_arrow_down_outlined,
-                      color: Colors.black,
-                    ),
-                  ),
-                  children: Sponsor.map((sponsor) => Text(
-                        sponsor,
-                        textAlign: TextAlign.left,
-                        style: TextStyle(color: Colors.white),
-                      )).toList(),
-                  onExpansionChanged: (value) {
-                    setState(() {
-                      isExpanded2 = !isExpanded2;
-                    });
-                  },
-                ),
-                ExpansionTile(
-                  key: expansionTileKey,
-                  title: Text(
-                    "Winners",
-                    style: TextStyle(
-                      fontSize: SizeConfig.baseFontSize * 5,
-                    ),
-                  ),
-                  leading: Icon(
-                    Icons.star_border,
-                    color: Colors.white,
-                  ),
-                  textColor: Colors.white,
-                  collapsedTextColor: Colors.white,
-                  trailing: Container(
-                    width: SizeConfig.screenHeight * 0.04,
-                    height: SizeConfig.screenHeight * 0.04,
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      shape: BoxShape.circle,
-                    ),
-                    child: Icon(
-                      isExpanded3
-                          ? Icons.keyboard_arrow_up_outlined
-                          : Icons.keyboard_arrow_down_outlined,
-                      color: Colors.black,
-                    ),
-                  ),
-                  children: Winners.map((value) => Text(
-                        value,
-                        style: TextStyle(color: Colors.white),
-                        textAlign: TextAlign.left,
-                      )).toList(),
-                  onExpansionChanged: (value) {
-                    if (value) {
-                      _scrollToSelectedContent(
-                          expansionTileKey: expansionTileKey);
-                    }
-                    setState(() {
-                      isExpanded3 = !isExpanded3;
-                    });
-                  },
-                )
-              ],
+              children: personTypeList
+                  .map((e) => Expansion_Tile(
+                        isExpanded: isExpanded1,
+                        expansionTileDetails: e,
+                      ))
+                  .toList(),
             ),
           ),
         ],
       ),
     );
-  }
-}
-
-void _scrollToSelectedContent({required GlobalKey expansionTileKey}) {
-  final keyContext = expansionTileKey.currentContext;
-  if (keyContext != null) {
-    Future.delayed(Duration(milliseconds: 200)).then((value) {
-      Scrollable.ensureVisible(keyContext,
-          duration: Duration(milliseconds: 200));
-    });
   }
 }
