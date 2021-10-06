@@ -1,9 +1,9 @@
 class MemberDetailModel {
-  String name;
-  String position;
-  String githubUrl;
-  String linkedinUrl;
-  String assetImage;
+  String? name;
+  String? position;
+  String? githubUrl;
+  String? linkedinUrl;
+  String? assetImage;
   MemberDetailModel({
     required this.name,
     required this.position,
@@ -11,28 +11,22 @@ class MemberDetailModel {
     required this.linkedinUrl,
     required this.assetImage,
   });
-}
 
-List<MemberDetailModel> memberDetails = [
-  MemberDetailModel(
-    name: "Pranshi Jindal",
-    position: "Organiser Lead",
-    githubUrl: "https://github.com/",
-    linkedinUrl: "https://www.linkedin.com/login",
-    assetImage: "assets/images/blank_photo.jpg",
-  ),
-  MemberDetailModel(
-    name: "Vidita Agrawal",
-    position: "Technical Lead",
-    githubUrl: "https://github.com/",
-    linkedinUrl: "https://www.linkedin.com/login",
-    assetImage: "assets/images/blank_photo.jpg",
-  ),
-  MemberDetailModel(
-    name: "Harsh Taliwal",
-    position: "Technical Lead",
-    githubUrl: "https://github.com/",
-    linkedinUrl: "https://www.linkedin.com/login",
-    assetImage: "assets/images/blank_photo.jpg",
-  ),
-];
+  Map toMap(MemberDetailModel member) {
+    Map<String, dynamic> teamMap = Map<String, dynamic>();
+    teamMap['name'] = member.name;
+    teamMap['position'] = member.position;
+    teamMap['githubUrl'] = member.githubUrl;
+    teamMap['linkedinUrl'] = member.linkedinUrl;
+    teamMap['image'] = member.assetImage;
+    return teamMap;
+  }
+
+  MemberDetailModel.fromMap(doc) {
+    name = doc['name'];
+    position = doc['position'];
+    githubUrl = doc['githubUrl'];
+    linkedinUrl = doc['linkedinUrl'];
+    assetImage = doc['image'];
+  }
+}
