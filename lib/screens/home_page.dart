@@ -19,10 +19,7 @@ class HomePage extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: SizeConfig.safeBlockVertical * 3,
-                  ),
+                SafeArea(
                   child: IconButton(
                     onPressed: () {
                       globalKey.currentState!.openDrawer();
