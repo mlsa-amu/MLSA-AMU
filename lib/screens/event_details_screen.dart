@@ -94,6 +94,36 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                   .toList(),
             ),
           ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                SizeConfig.safeBlockHorizontal * 4.2,
+                SizeConfig.safeBlockVertical * 1.5,
+                0,
+                SizeConfig.safeBlockHorizontal * 1.6),
+            child: Text(
+              "About",
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                  color: Colors.white,
+                  fontSize: SizeConfig.baseFontSize * 6,
+                  fontWeight: FontWeight.bold),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.fromLTRB(
+                SizeConfig.safeBlockHorizontal * 4.2,
+                SizeConfig.safeBlockVertical * .5,
+                0,
+                SizeConfig.safeBlockHorizontal * 1.6),
+            child: Text(
+              eventsImages[widget.index].about,
+              textAlign: TextAlign.left,
+              style: TextStyle(
+                color: Colors.white.withOpacity(.90),
+                fontSize: SizeConfig.baseFontSize * 4.4,
+              ),
+            ),
+          ),
         ],
       ),
     );
