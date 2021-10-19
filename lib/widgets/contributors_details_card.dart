@@ -1,11 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:mlsa_amu/models/team_details.dart';
 import 'package:mlsa_amu/utils/size_config.dart';
 
 class ContributorDetailsCard extends StatelessWidget {
-  final MemberDetailModel? memberdetails;
-  ContributorDetailsCard({this.memberdetails});
-
   @override
   Widget build(BuildContext context) {
     return ListTile(
@@ -17,7 +13,9 @@ class ContributorDetailsCard extends StatelessWidget {
         backgroundColor: Colors.white,
       ),
       title: Padding(
-        padding: EdgeInsets.only(bottom: SizeConfig.safeBlockVertical * 0.6),
+        padding: EdgeInsets.only(
+          bottom: SizeConfig.safeBlockVertical * 0.6,
+        ),
         child: Text(
           "Harsh",
           style: TextStyle(
