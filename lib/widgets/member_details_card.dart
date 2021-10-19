@@ -32,8 +32,8 @@ class MemberDetailsCard extends StatelessWidget {
                 borderRadius: BorderRadius.all(
                   Radius.circular(10),
                 ),
-                child: Image.asset(
-                  memberdetails.assetImage,
+                child: Image.network(
+                  memberdetails.assetImage!,
                   fit: BoxFit.fill,
                   width: SizeConfig.screenWidth / 3,
                   height: SizeConfig.screenHeight / 6,
@@ -47,7 +47,7 @@ class MemberDetailsCard extends StatelessWidget {
                     crossAxisAlignment: CrossAxisAlignment.end,
                     children: [
                       Text(
-                        memberdetails.name,
+                        memberdetails.name!,
                         textAlign: TextAlign.end,
                         style: TextStyle(
                           fontSize: SizeConfig.baseFontSize * 5,
@@ -59,7 +59,7 @@ class MemberDetailsCard extends StatelessWidget {
                           top: SizeConfig.safeBlockVertical * 0.5,
                         ),
                         child: Text(
-                          memberdetails.position,
+                          memberdetails.position!,
                           textAlign: TextAlign.end,
                           style: TextStyle(
                             fontSize: SizeConfig.baseFontSize * 3.5,
@@ -81,7 +81,7 @@ class MemberDetailsCard extends StatelessWidget {
                             size: SizeConfig.iconGeneralHeightAndWidth * 1.3,
                           ),
                           onTap: () {
-                            _launchURLBrowser(memberdetails.githubUrl);
+                            _launchURLBrowser(memberdetails.githubUrl!);
                           },
                         ),
                       ),
@@ -92,7 +92,7 @@ class MemberDetailsCard extends StatelessWidget {
                           size: SizeConfig.iconGeneralHeightAndWidth * 1.3,
                         ),
                         onTap: () {
-                          _launchURLBrowser(memberdetails.linkedinUrl);
+                          _launchURLBrowser(memberdetails.linkedinUrl!);
                         },
                       ),
                     ],

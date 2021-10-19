@@ -2,20 +2,20 @@ class ContributorsModel {
   String? contributorName;
   int? contributions;
   String? githubUrl;
-  String? image;
+  String? contributorsImage;
 
   ContributorsModel({
     required this.contributorName,
     required this.contributions,
     required this.githubUrl,
-    required this.image,
+    required this.contributorsImage,
   });
 
   ContributorsModel.fromJson(Map<String, dynamic> json) {
     contributorName = json['login'];
     contributions = json['contributions'];
     githubUrl = json['html_url'];
-    image = json['avatar_url'];
+    contributorsImage = json['avatar_url'];
   }
 
   Map<String, dynamic> toJson() {
@@ -23,7 +23,7 @@ class ContributorsModel {
     data['contributorName'] = this.contributorName;
     data['contributions'] = this.contributions;
     data['githubUrl'] = this.githubUrl;
-    data['image'] = this.image;
+    data['image'] = this.contributorsImage;
     return data;
   }
 }

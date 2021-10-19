@@ -84,7 +84,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        TextButton.icon(
+                        ElevatedButton(
                           onPressed: () {
                             if (sideItems[index] != "Home") {
                               Navigator.push(
@@ -95,17 +95,33 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                               );
                             }
                           },
-                          icon: Icon(
-                            sideItemsIcon[index],
-                            color: Colors.white,
+                          style: ElevatedButton.styleFrom(
+                            primary: Colors.transparent,
+                            elevation: 0,
                           ),
-                          label: Text(
-                            sideItems[index],
-                            style: TextStyle(
-                              color: Colors.blue.shade900,
-                              fontWeight: FontWeight.w600,
-                              fontSize: SizeConfig.baseFontSize * 5,
-                            ),
+                          child: Row(
+                            children: [
+                              Padding(
+                                padding:
+                                    EdgeInsets.all(SizeConfig.kDefaultPadding),
+                                child: Icon(
+                                  sideItemsIcon[index],
+                                  color: Colors.white,
+                                ),
+                              ),
+                              Padding(
+                                padding:
+                                    EdgeInsets.all(SizeConfig.kDefaultPadding),
+                                child: Text(
+                                  sideItems[index],
+                                  style: TextStyle(
+                                    color: Colors.blue.shade900,
+                                    fontWeight: FontWeight.w600,
+                                    fontSize: SizeConfig.baseFontSize * 5,
+                                  ),
+                                ),
+                              ),
+                            ],
                           ),
                         ),
                         Container(
