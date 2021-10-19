@@ -1,15 +1,37 @@
 import 'package:flutter/material.dart';
+import 'package:mlsa_amu/widgets/contributors_details_card.dart';
 
 class ContributorsScreen extends StatelessWidget {
-  const ContributorsScreen({Key? key}) : super(key: key);
-
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: Center(
-        child: Text(
-          "Contributors Screen\nNeed to be done",
-          textAlign: TextAlign.center,
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomLeft,
+          colors: [
+            Colors.blue.shade900,
+            Color(0XFF792adc),
+            Color(0XFF792adc),
+          ],
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        body: SingleChildScrollView(
+          physics: BouncingScrollPhysics(),
+          child: Column(
+            children: [
+              ListView.builder(
+                shrinkWrap: true,
+                physics: NeverScrollableScrollPhysics(),
+                itemCount: 4,
+                itemBuilder: (context, index) {
+                  return ContributorDetailsCard();
+                },
+              ),
+            ],
+          ),
         ),
       ),
     );
