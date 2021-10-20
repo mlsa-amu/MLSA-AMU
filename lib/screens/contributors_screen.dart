@@ -8,13 +8,9 @@ class ContributorsScreen extends StatelessWidget {
     return Container(
       decoration: new BoxDecoration(
           gradient: new LinearGradient(
-        begin: Alignment.topCenter,
-        end: Alignment.bottomCenter,
-        colors: [
-          Color.fromARGB(240, 33, 150, 83),
-          Color.fromARGB(240, 121, 42, 220)
-        ],
-      )),
+              begin: Alignment.topCenter,
+              end: Alignment.bottomCenter,
+              colors: [Color(0xFF219653), Color(0xFF792ADC)])),
       child: Scaffold(
         backgroundColor: Colors.transparent,
         appBar: AppBar(
