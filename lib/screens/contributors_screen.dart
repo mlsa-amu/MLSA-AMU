@@ -1,10 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mlsa_amu/api/api.dart';
-import 'package:mlsa_amu/models/contributors.dart';
 import 'package:mlsa_amu/models/repo_details.dart';
+import 'package:mlsa_amu/screens/starred_user_screen.dart';
 import 'package:mlsa_amu/utils/size_config.dart';
-import 'package:mlsa_amu/widgets/contributors_details_card.dart';
+import 'package:mlsa_amu/widgets/user_details_card.dart';
 
 class ContributorsScreen extends StatefulWidget {
   const ContributorsScreen({Key? key}) : super(key: key);
@@ -20,12 +20,17 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
     API().fetchRepoDetails().then((value) {
       if (value != null) {
         repoDetails = RepoDetailsModel.fromJson(value);
-        API().fetchContributors(repoDetails.contributorsUrl!).then((value) {
+        API().fetchUsersDetails(repoDetails.contributorsUrl!).then((value) {
           if (value != null) {
             value.forEach((item) {
-              ContributorsModel contributorsModel =
-                  ContributorsModel.fromJson(item);
-              repoDetails.contributorsList!.add(contributorsModel);
+              UserDetails contributorsModel = UserDetails.fromJson(item);
+              API().fetchUsersDetails(contributorsModel.apiUrl!).then((value) {
+                if (value != null) {
+                  contributorsModel.bio = value['bio'];
+                  repoDetails.contributorsList!.add(contributorsModel);
+                }
+                setState(() {});
+              });
             });
           }
           setState(() {});
@@ -42,9 +47,7 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
     return Scaffold(
       backgroundColor: Color(0XFF17181C),
       body: repoDetails.contributorsList == null
-          ? Center(
-              child: CircularProgressIndicator(),
-            )
+          ? Container()
           : SingleChildScrollView(
               physics: BouncingScrollPhysics(),
               child: Padding(
@@ -92,11 +95,22 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
                       child: Wrap(
                         crossAxisAlignment: WrapCrossAlignment.center,
                         children: [
-                          getHeaderView(
-                            FontAwesomeIcons.star,
-                            repoDetails.stars!,
-                            "stars",
-                            iconColor: Colors.yellow,
+                          InkWell(
+                            onTap: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                  builder: (context) =>
+                                      StarredUserScreen(repoDetails.starUrl!),
+                                ),
+                              );
+                            },
+                            child: getHeaderView(
+                              FontAwesomeIcons.star,
+                              repoDetails.stars!,
+                              "stars",
+                              iconColor: Colors.yellow,
+                            ),
                           ),
                           getHeaderView(
                             FontAwesomeIcons.codeBranch,
@@ -114,7 +128,7 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
                     ),
                     Divider(
                       color: Colors.grey,
-                      height: 30,
+                      height: 40,
                     ),
                     Text(
                       "Contributors",
@@ -125,16 +139,20 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    ListView.builder(
+                    ListView.separated(
+                      separatorBuilder: (_, __) => SizedBox(
+                        height: 30,
+                      ),
                       shrinkWrap: true,
                       physics: NeverScrollableScrollPhysics(),
                       itemCount: repoDetails.contributorsList!.length,
                       itemBuilder: (context, index) {
-                        return ContributorDetailsCard(
+                        return UserDetailsCard(
                           repoDetails.contributorsList![index],
                         );
                       },
                     ),
+                    SizedBox(height: 30),
                   ],
                 ),
               ),
