@@ -23,8 +23,7 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
         API().fetchContributors(repoDetails.contributorsUrl!).then((value) {
           if (value != null) {
             value.forEach((item) {
-              ContributorsModel contributorsModel =
-                  ContributorsModel.fromJson(item);
+              ContributorsModel contributorsModel = ContributorsModel.fromJson(item);
               repoDetails.contributorsList!.add(contributorsModel);
             });
           }
@@ -41,6 +40,16 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0XFF17181C),
+      appBar: AppBar(
+        title: Text(
+          "Contributors",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
       body: repoDetails.contributorsList == null
           ? Center(
               child: CircularProgressIndicator(),
@@ -54,7 +63,6 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    SizedBox(height: 50),
                     Row(
                       children: [
                         Image.asset(
