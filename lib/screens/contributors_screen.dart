@@ -4,6 +4,7 @@ import 'package:mlsa_amu/api/api.dart';
 import 'package:mlsa_amu/models/repo_details.dart';
 import 'package:mlsa_amu/screens/starred_user_screen.dart';
 import 'package:mlsa_amu/utils/size_config.dart';
+import 'package:mlsa_amu/widgets/contributors_header.dart';
 import 'package:mlsa_amu/widgets/user_details_card.dart';
 
 class ContributorsScreen extends StatefulWidget {
@@ -46,6 +47,16 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Color(0XFF17181C),
+      appBar: AppBar(
+        title: Text(
+          "Contributors",
+          style: TextStyle(
+            color: Colors.white,
+          ),
+        ),
+        backgroundColor: Color(0XFF0B0B0D),
+        elevation: 0,
+      ),
       body: repoDetails.contributorsList == null
           ? Container()
           : SingleChildScrollView(
@@ -62,7 +73,6 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        SizedBox(height: 50),
                         Row(
                           children: [
                             Image.asset(
@@ -105,23 +115,24 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => StarredUserScreen(repoDetails.starUrl!),
+                                      builder: (context) => StarredUserScreen(
+                                          repoDetails.starUrl!),
                                     ),
                                   );
                                 },
-                                child: getHeaderView(
+                                child: ContributorsHeader(
                                   FontAwesomeIcons.star,
                                   repoDetails.stars!,
                                   "stars",
                                   iconColor: Colors.yellow,
                                 ),
                               ),
-                              getHeaderView(
+                              ContributorsHeader(
                                 FontAwesomeIcons.codeBranch,
                                 repoDetails.forks!,
                                 "forks",
                               ),
-                              getHeaderView(
+                              ContributorsHeader(
                                 FontAwesomeIcons.dotCircle,
                                 repoDetails.openIssues!,
                                 "issues",
@@ -180,54 +191,6 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
                 ],
               ),
             ),
-    );
-  }
-
-  Widget getHeaderView(
-    IconData iconData,
-    int data,
-    String dataText, {
-    Color iconColor = Colors.grey,
-  }) {
-    return Padding(
-      padding: EdgeInsets.only(
-        top: SizeConfig.safeBlockVertical * 0.6,
-      ),
-      child: Row(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          Icon(
-            iconData,
-            color: iconColor,
-            size: SizeConfig.iconGeneralHeightAndWidth * 0.5,
-          ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: SizeConfig.safeBlockHorizontal * 2,
-            ),
-            child: Text(
-              data.toString(),
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: SizeConfig.baseFontSize * 4.5,
-                fontWeight: FontWeight.bold,
-              ),
-            ),
-          ),
-          Padding(
-            padding: EdgeInsets.only(
-              right: SizeConfig.safeBlockHorizontal * 2.5,
-            ),
-            child: Text(
-              dataText,
-              style: TextStyle(
-                color: Colors.grey,
-                fontSize: SizeConfig.baseFontSize * 4,
-              ),
-            ),
-          ),
-        ],
-      ),
     );
   }
 }

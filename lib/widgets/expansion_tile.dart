@@ -2,16 +2,17 @@ import 'package:flutter/material.dart';
 import 'package:mlsa_amu/models/event_details.dart';
 import 'package:mlsa_amu/utils/size_config.dart';
 
-class ExpansionCard extends StatefulWidget {
+class Expansion_Tile extends StatefulWidget {
   bool isExpanded;
   ExpansionTileDetails expansionTileDetails;
-  ExpansionCard({required this.isExpanded, required this.expansionTileDetails});
+  Expansion_Tile(
+      {required this.isExpanded, required this.expansionTileDetails});
 
   @override
-  _ExpansionCardState createState() => _ExpansionCardState();
+  _Expansion_TileState createState() => _Expansion_TileState();
 }
 
-class _ExpansionCardState extends State<ExpansionCard> {
+class _Expansion_TileState extends State<Expansion_Tile> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(

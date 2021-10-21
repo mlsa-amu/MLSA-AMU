@@ -87,7 +87,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
           SingleChildScrollView(
             child: Column(
               children: personTypeList
-                  .map((e) => ExpansionCard(
+                  .map((e) => Expansion_Tile(
                         isExpanded: isExpanded1,
                         expansionTileDetails: e,
                       ))
