@@ -50,87 +50,96 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
           ? Container()
           : SingleChildScrollView(
               physics: BouncingScrollPhysics(),
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: SizeConfig.safeBlockHorizontal * 4,
-                ),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    SizedBox(height: 50),
-                    Row(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    color: Color(0XFF0B0B0D),
+                    padding: EdgeInsets.symmetric(
+                      vertical: SizeConfig.safeBlockVertical * 4,
+                      horizontal: SizeConfig.safeBlockHorizontal * 4,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
                       children: [
-                        Image.asset(
-                          "assets/images/mlsa-logo.png",
-                          height: SizeConfig.iconGeneralHeightAndWidth,
-                          width: SizeConfig.iconGeneralHeightAndWidth,
+                        SizedBox(height: 50),
+                        Row(
+                          children: [
+                            Image.asset(
+                              "assets/images/mlsa-logo.png",
+                              height: SizeConfig.iconGeneralHeightAndWidth,
+                              width: SizeConfig.iconGeneralHeightAndWidth,
+                            ),
+                            SizedBox(width: 5),
+                            Text(
+                              repoDetails.repoName!,
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontSize: SizeConfig.baseFontSize * 7,
+                                fontWeight: FontWeight.bold,
+                              ),
+                            )
+                          ],
                         ),
-                        SizedBox(width: 5),
-                        Text(
-                          repoDetails.repoName!,
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: SizeConfig.baseFontSize * 7,
-                            fontWeight: FontWeight.bold,
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: SizeConfig.safeBlockVertical * 2,
                           ),
-                        )
-                      ],
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: SizeConfig.safeBlockVertical * 2,
-                      ),
-                      child: Text(
-                        repoDetails.repoDescription!,
-                        style: TextStyle(
-                          color: Colors.white.withOpacity(0.8),
-                          fontSize: SizeConfig.baseFontSize * 4,
-                        ),
-                      ),
-                    ),
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: SizeConfig.safeBlockVertical * 2,
-                      ),
-                      child: Wrap(
-                        crossAxisAlignment: WrapCrossAlignment.center,
-                        children: [
-                          InkWell(
-                            onTap: () {
-                              Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                  builder: (context) =>
-                                      StarredUserScreen(repoDetails.starUrl!),
-                                ),
-                              );
-                            },
-                            child: getHeaderView(
-                              FontAwesomeIcons.star,
-                              repoDetails.stars!,
-                              "stars",
-                              iconColor: Colors.yellow,
+                          child: Text(
+                            repoDetails.repoDescription!,
+                            style: TextStyle(
+                              color: Colors.white.withOpacity(0.8),
+                              fontSize: SizeConfig.baseFontSize * 4,
                             ),
                           ),
-                          getHeaderView(
-                            FontAwesomeIcons.codeBranch,
-                            repoDetails.forks!,
-                            "forks",
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: SizeConfig.safeBlockVertical * 2,
                           ),
-                          getHeaderView(
-                            FontAwesomeIcons.dotCircle,
-                            repoDetails.openIssues!,
-                            "issues",
-                            iconColor: Colors.green,
+                          child: Wrap(
+                            crossAxisAlignment: WrapCrossAlignment.center,
+                            children: [
+                              InkWell(
+                                onTap: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                      builder: (context) => StarredUserScreen(repoDetails.starUrl!),
+                                    ),
+                                  );
+                                },
+                                child: getHeaderView(
+                                  FontAwesomeIcons.star,
+                                  repoDetails.stars!,
+                                  "stars",
+                                  iconColor: Colors.yellow,
+                                ),
+                              ),
+                              getHeaderView(
+                                FontAwesomeIcons.codeBranch,
+                                repoDetails.forks!,
+                                "forks",
+                              ),
+                              getHeaderView(
+                                FontAwesomeIcons.dotCircle,
+                                repoDetails.openIssues!,
+                                "issues",
+                                iconColor: Colors.green,
+                              ),
+                            ],
                           ),
-                        ],
-                      ),
+                        ),
+                      ],
                     ),
-                    Divider(
-                      color: Colors.grey,
-                      height: 40,
+                  ),
+                  Padding(
+                    padding: EdgeInsets.only(
+                      top: SizeConfig.safeBlockVertical * 2,
+                      left: SizeConfig.safeBlockHorizontal * 4,
+                      right: SizeConfig.safeBlockHorizontal * 4,
                     ),
-                    Text(
+                    child: Text(
                       "Contributors",
                       textAlign: TextAlign.start,
                       style: TextStyle(
@@ -139,22 +148,36 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
                         fontWeight: FontWeight.bold,
                       ),
                     ),
-                    ListView.separated(
-                      separatorBuilder: (_, __) => SizedBox(
-                        height: 30,
-                      ),
-                      shrinkWrap: true,
-                      physics: NeverScrollableScrollPhysics(),
-                      itemCount: repoDetails.contributorsList!.length,
-                      itemBuilder: (context, index) {
-                        return UserDetailsCard(
-                          repoDetails.contributorsList![index],
-                        );
-                      },
-                    ),
-                    SizedBox(height: 30),
-                  ],
-                ),
+                  ),
+                  repoDetails.contributorsList!.length == 0
+                      ? Center(
+                          child: SizedBox(
+                            height: 30,
+                            width: 30,
+                            child: CircularProgressIndicator(
+                              strokeWidth: 3,
+                            ),
+                          ),
+                        )
+                      : ListView.separated(
+                          separatorBuilder: (_, __) => SizedBox(
+                            height: 30,
+                          ),
+                          padding: EdgeInsets.symmetric(
+                            vertical: SizeConfig.safeBlockVertical * 4,
+                            horizontal: SizeConfig.safeBlockHorizontal * 4,
+                          ),
+                          shrinkWrap: true,
+                          physics: NeverScrollableScrollPhysics(),
+                          itemCount: repoDetails.contributorsList!.length,
+                          itemBuilder: (context, index) {
+                            return UserDetailsCard(
+                              repoDetails.contributorsList![index],
+                            );
+                          },
+                        ),
+                  SizedBox(height: 30),
+                ],
               ),
             ),
     );
