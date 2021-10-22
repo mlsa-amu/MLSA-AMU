@@ -1,28 +1,46 @@
 import 'package:flutter/material.dart';
-import 'package:mlsa_amu/models/event_details.dart';
 import 'package:mlsa_amu/utils/size_config.dart';
 
-class Expansion_Tile extends StatefulWidget {
-  bool isExpanded;
-  ExpansionTileDetails expansionTileDetails;
-  Expansion_Tile(
-      {required this.isExpanded, required this.expansionTileDetails});
+class Expansion extends StatefulWidget {
+  final bool isExpanded;
+  final List expansionTileDetails;
+  final int index;
+  Expansion(
+      {required this.isExpanded,
+      required this.expansionTileDetails,
+      required this.index});
 
   @override
-  _Expansion_TileState createState() => _Expansion_TileState();
+  _ExpansionState createState() => _ExpansionState();
 }
 
-class _Expansion_TileState extends State<Expansion_Tile> {
+class _ExpansionState extends State<Expansion> {
+  bool expanded = false;
+  List<IconData> iconList = [
+    Icons.people,
+    Icons.favorite_border_rounded,
+    Icons.star_border,
+  ];
+  List<String> heading = [
+    "Organizers",
+    "Sponsors",
+    "Winners",
+  ];
+  void initState() {
+    super.initState();
+    expanded = widget.isExpanded;
+  }
+
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
       title: Text(
-        widget.expansionTileDetails.personTypeName,
+        heading[widget.index],
         style: TextStyle(
           fontSize: SizeConfig.baseFontSize * 5,
         ),
       ),
-      leading: Icon(widget.expansionTileDetails.icon, color: Colors.white),
+      leading: Icon(iconList[widget.index], color: Colors.white),
       textColor: Colors.white,
       collapsedTextColor: Colors.white,
       trailing: Container(
@@ -33,22 +51,30 @@ class _Expansion_TileState extends State<Expansion_Tile> {
           shape: BoxShape.circle,
         ),
         child: Icon(
-          widget.isExpanded
+          expanded
               ? Icons.keyboard_arrow_up_outlined
               : Icons.keyboard_arrow_down_outlined,
           color: Colors.black,
         ),
       ),
-      children: widget.expansionTileDetails.personType
-          .map((sponsor) => Text(
-                sponsor,
+      children: widget.expansionTileDetails
+          .map(
+            (element) => ListTile(
+              leading: Icon(
+                Icons.person,
+                color: Colors.white,
+              ),
+              title: Text(
+                element,
                 textAlign: TextAlign.left,
                 style: TextStyle(color: Colors.white),
-              ))
+              ),
+            ),
+          )
           .toList(),
       onExpansionChanged: (value) {
         setState(() {
-          widget.isExpanded = !widget.isExpanded;
+          expanded = !expanded;
         });
       },
     );
