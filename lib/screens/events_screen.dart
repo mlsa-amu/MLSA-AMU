@@ -1,8 +1,26 @@
 import 'package:flutter/material.dart';
 import 'package:mlsa_amu/models/events.dart';
+import 'package:mlsa_amu/services/event_service.dart';
 import 'package:mlsa_amu/widgets/event_card.dart';
 
-class EventsScreen extends StatelessWidget {
+class EventsScreen extends StatefulWidget {
+  @override
+  _EventsScreenState createState() => _EventsScreenState();
+}
+
+class _EventsScreenState extends State<EventsScreen> {
+  List<Events> eventsList = [];
+
+  @override
+  void initState() {
+    super.initState();
+    EventService().fetchEventDetails().then((value) async {
+      setState(() {
+        eventsList = value;
+      });
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -30,9 +48,9 @@ class EventsScreen extends StatelessWidget {
           elevation: 0,
         ),
         body: ListView.builder(
-          itemCount: eventsImages.length,
+          itemCount: eventsList.length,
           itemBuilder: (BuildContext context, int index) {
-            return EventCard(index);
+            return EventCard(eventsList[index]);
           },
         ),
       ),
