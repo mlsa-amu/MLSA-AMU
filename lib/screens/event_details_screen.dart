@@ -4,7 +4,7 @@ import 'package:mlsa_amu/utils/size_config.dart';
 import 'package:mlsa_amu/widgets/expansion_tile.dart';
 
 class EventDetailsPage extends StatefulWidget {
-  final Events event;
+  final EventsModel event;
   EventDetailsPage({required this.event});
 
   @override

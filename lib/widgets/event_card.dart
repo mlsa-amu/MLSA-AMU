@@ -5,7 +5,7 @@ import 'package:mlsa_amu/screens/event_details_screen.dart';
 import 'package:mlsa_amu/utils/size_config.dart';
 
 class EventCard extends StatelessWidget {
-  final Events event;
+  final EventsModel event;
   EventCard(this.event);
 
   @override

@@ -4,10 +4,10 @@ import 'package:mlsa_amu/models/events.dart';
 class EventService {
   Future fetchEventDetails() async {
     QuerySnapshot query;
-    List<Events> eventsList = [];
-    query = await FirebaseFirestore.instance.collection('event').get();
+    List<EventsModel> eventsList = [];
+    query = await FirebaseFirestore.instance.collection('event').orderBy('createdAt').get();
     query.docs.forEach((element) {
-      Events event = Events.fromMap(element.data());
+      EventsModel event = EventsModel.fromMap(element.data());
       eventsList.add(event);
     });
 

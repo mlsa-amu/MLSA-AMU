@@ -1,4 +1,4 @@
-class Events {
+class EventsModel {
   String? image;
   String? title;
   String? subTitle;
@@ -9,7 +9,7 @@ class Events {
   List? organizers;
   List? sponsors;
 
-  Events({
+  EventsModel({
     required this.image,
     required this.title,
     required this.subTitle,
@@ -20,7 +20,7 @@ class Events {
     required this.startDate,
     required this.endDate,
   });
-    Map toMap(Events event) {
+    Map toMap(EventsModel event) {
     Map<String, dynamic> teamMap = Map<String, dynamic>();
     teamMap['title'] = event.title;
     teamMap['subtitle'] = event.subTitle;
@@ -34,7 +34,7 @@ class Events {
     return teamMap;
   }
 
-  Events.fromMap(doc) {
+  EventsModel.fromMap(doc) {
     title = doc['title'];
     subTitle = doc['subtitle'];
     about = doc['about'];

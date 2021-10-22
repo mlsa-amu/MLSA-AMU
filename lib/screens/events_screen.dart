@@ -9,7 +9,7 @@ class EventsScreen extends StatefulWidget {
 }
 
 class _EventsScreenState extends State<EventsScreen> {
-  List<Events> eventsList = [];
+  List<EventsModel> eventsList = [];
 
   @override
   void initState() {
