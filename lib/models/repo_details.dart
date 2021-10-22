@@ -1,5 +1,3 @@
-import 'package:mlsa_amu/models/contributors.dart';
-
 class RepoDetailsModel {
   String? repoName;
   String? repoDescription;
@@ -7,7 +5,8 @@ class RepoDetailsModel {
   int? forks;
   int? openIssues;
   String? contributorsUrl;
-  List<ContributorsModel>? contributorsList = [];
+  String? starUrl;
+  List<UserDetails>? contributorsList = [];
 
   RepoDetailsModel({
     this.repoName,
@@ -16,6 +15,7 @@ class RepoDetailsModel {
     this.forks,
     this.openIssues,
     this.contributorsUrl,
+    this.starUrl,
     this.contributorsList,
   });
 
@@ -26,17 +26,37 @@ class RepoDetailsModel {
     forks = json['forks_count'];
     openIssues = json['open_issues_count'];
     contributorsUrl = json['contributors_url'];
+    starUrl = json['stargazers_url'];
     contributorsList = [];
   }
+}
 
-  Map<String, dynamic> toJson() {
-    final Map<String, dynamic> data = new Map<String, dynamic>();
-    data['repoName'] = this.repoName;
-    data['repoDescription'] = this.repoDescription;
-    data['stars'] = this.stars;
-    data['forks'] = this.forks;
-    data['openIssues'] = this.openIssues;
-    data['contributorsUrl'] = this.contributorsUrl;
-    return data;
+class UserDetails {
+  String? fullName;
+  String? bio;
+  String? userName;
+  int? contributions;
+  String? githubUrl;
+  String? apiUrl;
+  String? userImage;
+
+  UserDetails({
+    this.fullName,
+    this.bio,
+    this.userName,
+    this.contributions,
+    this.githubUrl,
+    this.apiUrl,
+    this.userImage,
+  });
+
+  UserDetails.fromMap(Map<String, dynamic> json) {
+    fullName = json['name'];
+    bio = json['bio'];
+    userName = json['login'];
+    contributions = json['contributions'];
+    githubUrl = json['html_url'];
+    apiUrl = json['url'];
+    userImage = json['avatar_url'];
   }
 }

@@ -24,7 +24,7 @@ class API {
     }
   }
 
-  Future fetchContributors(String url) async {
+  Future fetchUsersDetails(String url) async {
     try {
       Map<String, String> headers = {
         "Content-type": "application/json",
