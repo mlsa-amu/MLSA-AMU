@@ -17,10 +17,15 @@ class _StarredUserScreenState extends State<StarredUserScreen> {
 
   @override
   void initState() {
+    fetchStargazers();
+    super.initState();
+  }
+
+  fetchStargazers() {
     API().fetchUsersDetails(widget.starUrl).then((value) {
       if (value != null) {
         value.forEach((item) {
-          UserDetails userDetails = UserDetails.fromJson(item);
+          UserDetails userDetails = UserDetails.fromMap(item);
           API().fetchUsersDetails(userDetails.apiUrl!).then((value) {
             if (value != null) {
               userDetails.bio = value['bio'];
@@ -31,10 +36,7 @@ class _StarredUserScreenState extends State<StarredUserScreen> {
           });
         });
       }
-      setState(() {});
     });
-
-    super.initState();
   }
 
   @override

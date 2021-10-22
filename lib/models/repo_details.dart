@@ -50,7 +50,7 @@ class UserDetails {
     this.userImage,
   });
 
-  UserDetails.fromJson(Map<String, dynamic> json) {
+  UserDetails.fromMap(Map<String, dynamic> json) {
     fullName = json['name'];
     bio = json['bio'];
     userName = json['login'];

@@ -18,29 +18,31 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
   RepoDetailsModel repoDetails = RepoDetailsModel();
   @override
   void initState() {
-    API().fetchRepoDetails().then((value) {
+    fetchContributors();
+    super.initState();
+  }
+
+  fetchContributors() {
+    API().fetchRepoDetails().then((value) async {
       if (value != null) {
         repoDetails = RepoDetailsModel.fromJson(value);
-        API().fetchUsersDetails(repoDetails.contributorsUrl!).then((value) {
+        await API().fetchUsersDetails(repoDetails.contributorsUrl!).then((value) async {
           if (value != null) {
-            value.forEach((item) {
-              UserDetails contributorsModel = UserDetails.fromJson(item);
-              API().fetchUsersDetails(contributorsModel.apiUrl!).then((value) {
+            await value.forEach((item) async {
+              UserDetails contributorsModel = UserDetails.fromMap(item);
+              await API().fetchUsersDetails(contributorsModel.apiUrl!).then((value) {
                 if (value != null) {
                   contributorsModel.bio = value['bio'];
-                  repoDetails.contributorsList!.add(contributorsModel);
+                  setState(() {
+                    repoDetails.contributorsList!.add(contributorsModel);
+                  });
                 }
-                setState(() {});
               });
             });
           }
-          setState(() {});
         });
       }
-      setState(() {});
     });
-
-    super.initState();
   }
 
   @override
@@ -115,8 +117,7 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => StarredUserScreen(
-                                          repoDetails.starUrl!),
+                                      builder: (context) => StarredUserScreen(repoDetails.starUrl!),
                                     ),
                                   );
                                 },
