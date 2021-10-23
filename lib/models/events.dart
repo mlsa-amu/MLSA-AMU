@@ -3,8 +3,8 @@ class EventsModel {
   String? title;
   String? subTitle;
   String? about;
-  String? startDate;
-  String? endDate; 
+  DateTime? startDate;
+  DateTime? endDate;
   List? winners;
   List? organizers;
   List? sponsors;
@@ -20,7 +20,7 @@ class EventsModel {
     required this.startDate,
     required this.endDate,
   });
-    Map toMap(EventsModel event) {
+  Map toMap(EventsModel event) {
     Map<String, dynamic> teamMap = Map<String, dynamic>();
     teamMap['title'] = event.title;
     teamMap['subtitle'] = event.subTitle;
@@ -42,7 +42,7 @@ class EventsModel {
     winners = doc['winners'];
     organizers = doc['organizers'];
     sponsors = doc['sponsors'];
-    startDate = doc['startDate'];
-    endDate = doc['endDate'];
+    startDate = doc['startDate'].toDate();
+    endDate = doc['endDate'].toDate();
   }
 }

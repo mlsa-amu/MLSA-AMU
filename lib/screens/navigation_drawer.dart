@@ -48,8 +48,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
               colors: [
-                Colors.blue.shade900,
-                Colors.white,
+                Color(0XFF17181C),
+                Color(0XFF0B0B0D),
               ],
             ),
           ),
@@ -115,9 +115,8 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                                 child: Text(
                                   sideItems[index],
                                   style: TextStyle(
-                                    color: Colors.blue.shade900,
-                                    fontWeight: FontWeight.w600,
-                                    fontSize: SizeConfig.baseFontSize * 5,
+                                    color: Colors.white,
+                                    fontSize: SizeConfig.baseFontSize * 4.8,
                                   ),
                                 ),
                               ),
@@ -126,7 +125,7 @@ class _NavigationDrawerState extends State<NavigationDrawer> {
                         ),
                         Container(
                           child: Divider(
-                            color: Colors.blue.shade900,
+                            color: Colors.white,
                             height: 5,
                           ),
                         ),
