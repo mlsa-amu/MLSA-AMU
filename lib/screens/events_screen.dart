@@ -31,11 +31,10 @@ class _EventsScreenState extends State<EventsScreen> {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
-          end: Alignment.bottomLeft,
+          end: Alignment.bottomRight,
           colors: [
-            Colors.blue.shade900,
-            Color(0XFF792adc),
-            Color(0XFF792adc),
+            Color(0XFF17181C),
+            Color(0XFF0B0B0D),
           ],
         ),
       ),

@@ -7,79 +7,84 @@ class HomePage extends StatelessWidget {
   final globalKey = GlobalKey<ScaffoldState>();
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      key: globalKey,
-      drawer: NavigationDrawer(),
-      body: CustomPaint(
-        painter: Painter(),
-        child: Column(
+    return Container(
+      decoration: BoxDecoration(
+        gradient: LinearGradient(
+          begin: Alignment.topLeft,
+          end: Alignment.bottomRight,
+          colors: [
+            Color(0XFF17181C),
+            Color(0XFF0B0B0D),
+          ],
+        ),
+      ),
+      child: Scaffold(
+        backgroundColor: Colors.transparent,
+        key: globalKey,
+        drawer: NavigationDrawer(),
+        body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: EdgeInsets.only(
-                    top: SizeConfig.safeBlockVertical * 3,
-                  ),
-                  child: IconButton(
-                    onPressed: () {
-                      globalKey.currentState!.openDrawer();
-                    },
-                    icon: Icon(
-                      Icons.menu,
-                      color: Colors.white,
-                    ),
-                  ),
+            Padding(
+              padding: EdgeInsets.only(
+                top: SizeConfig.safeBlockVertical * 3.5,
+              ),
+              child: IconButton(
+                onPressed: () {
+                  globalKey.currentState!.openDrawer();
+                },
+                icon: Icon(
+                  Icons.menu,
+                  color: Colors.white,
                 ),
-                Container(
-                  child: ClipRRect(
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(300),
-                    ),
-                    child: Image.asset(
-                      "assets/images/home.jpeg",
-                      fit: BoxFit.cover,
-                      width: SizeConfig.screenWidth * 0.8,
-                      height: SizeConfig.screenHeight * 0.4,
-                    ),
-                  ),
+              ),
+            ),
+            Container(
+              padding: EdgeInsets.symmetric(
+                horizontal: SizeConfig.safeBlockHorizontal * 4,
+              ),
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(10),
+                child: Image.asset(
+                  "assets/images/home.jpeg",
+                  fit: BoxFit.cover,
+                  width: SizeConfig.screenWidth,
+                  height: SizeConfig.screenHeight * 0.3,
                 ),
-              ],
+              ),
             ),
             SizedBox(
               height: 40,
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.safeBlockHorizontal * 6,
+                horizontal: SizeConfig.safeBlockHorizontal * 4,
               ),
               child: Text(
                 'MLSA AMU',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: SizeConfig.baseFontSize * 9,
+                  fontSize: SizeConfig.baseFontSize * 8,
                   fontWeight: FontWeight.bold,
                 ),
               ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.safeBlockHorizontal * 6,
+                horizontal: SizeConfig.safeBlockHorizontal * 4,
               ),
               child: Text(
                 'A community by the students, for the students',
                 style: TextStyle(
                   color: Colors.white,
-                  fontSize: SizeConfig.baseFontSize * 5,
+                  fontSize: SizeConfig.baseFontSize * 4.5,
                   fontWeight: FontWeight.w600,
                 ),
               ),
             ),
             Padding(
               padding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.safeBlockHorizontal * 6,
+                horizontal: SizeConfig.safeBlockHorizontal * 4,
                 vertical: SizeConfig.safeBlockVertical * 2,
               ),
               child: Text(
@@ -87,7 +92,7 @@ class HomePage extends StatelessWidget {
                 style: TextStyle(
                   height: 1.5,
                   color: Colors.white,
-                  fontSize: SizeConfig.baseFontSize * 5.2,
+                  fontSize: SizeConfig.baseFontSize * 5,
                   fontWeight: FontWeight.w300,
                 ),
               ),

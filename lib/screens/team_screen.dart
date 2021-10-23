@@ -29,15 +29,15 @@ class _TeamScreenState extends State<TeamScreen> {
       decoration: BoxDecoration(
         gradient: LinearGradient(
           begin: Alignment.topLeft,
-          end: Alignment.bottomLeft,
+          end: Alignment.bottomRight,
           colors: [
-            Colors.blue.shade900,
-            Color(0XFF792adc),
-            Color(0XFF792adc),
+            Color(0XFF17181C),
+            Color(0XFF0B0B0D),
           ],
         ),
       ),
       child: Scaffold(
+        backgroundColor: Colors.transparent,
         appBar: AppBar(
           toolbarHeight: SizeConfig.appBarHeight,
           title: Text(
@@ -47,7 +47,6 @@ class _TeamScreenState extends State<TeamScreen> {
           backgroundColor: Colors.transparent,
           elevation: 0,
         ),
-        backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
           physics: BouncingScrollPhysics(),
           child: Column(

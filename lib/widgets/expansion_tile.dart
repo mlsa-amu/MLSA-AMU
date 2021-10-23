@@ -5,10 +5,11 @@ class Expansion extends StatefulWidget {
   final bool isExpanded;
   final List expansionTileDetails;
   final int index;
-  Expansion(
-      {required this.isExpanded,
-      required this.expansionTileDetails,
-      required this.index});
+  Expansion({
+    required this.isExpanded,
+    required this.expansionTileDetails,
+    required this.index,
+  });
 
   @override
   _ExpansionState createState() => _ExpansionState();
@@ -34,27 +35,31 @@ class _ExpansionState extends State<Expansion> {
   @override
   Widget build(BuildContext context) {
     return ExpansionTile(
+      backgroundColor: Color(0XFF0B0B0D),
       title: Text(
         heading[widget.index],
         style: TextStyle(
-          fontSize: SizeConfig.baseFontSize * 5,
+          fontSize: SizeConfig.baseFontSize * 4.5,
         ),
       ),
-      leading: Icon(iconList[widget.index], color: Colors.white),
+      leading: Icon(
+        iconList[widget.index],
+        color: Colors.white,
+      ),
       textColor: Colors.white,
       collapsedTextColor: Colors.white,
       trailing: Container(
         width: SizeConfig.screenHeight * 0.04,
         height: SizeConfig.screenHeight * 0.04,
         decoration: BoxDecoration(
-          color: Colors.white,
+          color: expanded ? Color(0XFF17181C) : Color(0XFF0B0B0D),
           shape: BoxShape.circle,
         ),
         child: Icon(
           expanded
               ? Icons.keyboard_arrow_up_outlined
               : Icons.keyboard_arrow_down_outlined,
-          color: Colors.black,
+          color: Colors.white,
         ),
       ),
       children: widget.expansionTileDetails
@@ -62,12 +67,12 @@ class _ExpansionState extends State<Expansion> {
             (element) => ListTile(
               leading: Icon(
                 Icons.person,
-                color: Colors.white,
+                color: Colors.grey,
               ),
               title: Text(
                 element,
                 textAlign: TextAlign.left,
-                style: TextStyle(color: Colors.white),
+                style: TextStyle(color: Colors.grey),
               ),
             ),
           )

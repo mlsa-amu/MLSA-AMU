@@ -46,7 +46,7 @@ class EventCard extends StatelessWidget {
             ClipRRect(
               borderRadius: BorderRadius.circular(10),
               child: Opacity(
-                opacity: 0.6,
+                opacity: 0.8,
                 child: Image.network(
                   event.image!,
                 ),
@@ -93,7 +93,8 @@ class EventCard extends StatelessWidget {
                     event.title!,
                     style: TextStyle(
                       color: Colors.white,
-                      fontSize: SizeConfig.baseFontSize * 5.2,
+                      fontWeight: FontWeight.bold,
+                      fontSize: SizeConfig.baseFontSize * 5,
                     ),
                   ),
                   Text(
