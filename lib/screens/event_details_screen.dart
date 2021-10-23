@@ -1,4 +1,7 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
+import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mlsa_amu/models/events.dart';
 import 'package:mlsa_amu/utils/size_config.dart';
 import 'package:mlsa_amu/widgets/expansion_tile.dart';
@@ -19,26 +22,26 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0xFF424368),
+      backgroundColor: Color(0XFF17181C),
       body: ListView(
         shrinkWrap: true,
         children: [
           Container(
-            height: SizeConfig.screenHeight * 0.523,
-            margin: EdgeInsets.fromLTRB(0, SizeConfig.safeBlockVertical * 2.9,
-                0, SizeConfig.safeBlockVertical * 2.5),
+            margin: EdgeInsets.only(
+              top: SizeConfig.safeBlockVertical * 5,
+              bottom: SizeConfig.safeBlockVertical * 3,
+            ),
             decoration: BoxDecoration(
               color: Colors.black,
-              borderRadius: BorderRadius.circular(10),
+              borderRadius: BorderRadius.circular(20),
             ),
             child: Stack(
-              fit: StackFit.expand,
               children: [
                 ClipRRect(
                   borderRadius: BorderRadius.circular(20),
                   child: Container(
-                    height: SizeConfig.screenHeight * 0.56,
                     width: SizeConfig.screenWidth,
+                    decoration: BoxDecoration(),
                     child: Image.network(
                       widget.event.image!,
                       fit: BoxFit.fill,
@@ -56,7 +59,8 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
                         widget.event.title!,
                         style: TextStyle(
                           color: Colors.white,
-                          fontSize: SizeConfig.baseFontSize * 5.2,
+                          fontWeight: FontWeight.bold,
+                          fontSize: SizeConfig.baseFontSize * 5,
                         ),
                       ),
                       Text(
@@ -73,15 +77,31 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(SizeConfig.safeBlockHorizontal * 4.2,
-                0, 0, SizeConfig.safeBlockHorizontal * 6.6),
-            child: Text(
-              widget.event.startDate! + " - " + widget.event.endDate!,
-              textAlign: TextAlign.left,
-              style: TextStyle(
-                color: Colors.white,
-                fontSize: SizeConfig.baseFontSize * 5,
-              ),
+            padding: EdgeInsets.only(
+              left: SizeConfig.safeBlockHorizontal * 4,
+              bottom: SizeConfig.safeBlockHorizontal * 6.5,
+            ),
+            child: Row(
+              children: [
+                Icon(
+                  FontAwesomeIcons.calendarAlt,
+                  color: Colors.blue,
+                ),
+                SizedBox(
+                  width: 10,
+                ),
+                Expanded(
+                  child: Text(
+                    widget.event.startDate! + " - " + widget.event.endDate!,
+                    textAlign: TextAlign.left,
+                    overflow: TextOverflow.ellipsis,
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontSize: SizeConfig.baseFontSize * 4.5,
+                    ),
+                  ),
+                ),
+              ],
             ),
           ),
           SingleChildScrollView(
@@ -108,32 +128,31 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(
-                SizeConfig.safeBlockHorizontal * 4.2,
-                SizeConfig.safeBlockVertical * 1.5,
-                SizeConfig.safeBlockHorizontal * 4.2,
-                SizeConfig.safeBlockVertical * 1.6),
+            padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.safeBlockHorizontal * 4,
+              vertical: SizeConfig.safeBlockVertical * 1.5,
+            ),
             child: Text(
               "About",
               textAlign: TextAlign.left,
               style: TextStyle(
-                  color: Colors.white,
-                  fontSize: SizeConfig.baseFontSize * 6,
-                  fontWeight: FontWeight.bold),
+                color: Colors.white,
+                fontSize: SizeConfig.baseFontSize * 5.5,
+                fontWeight: FontWeight.bold,
+              ),
             ),
           ),
           Padding(
-            padding: EdgeInsets.fromLTRB(
-                SizeConfig.safeBlockHorizontal * 4.2,
-                SizeConfig.safeBlockVertical * 1.3,
-                SizeConfig.safeBlockHorizontal * 4.2,
-                SizeConfig.safeBlockVertical * 1.6),
+            padding: EdgeInsets.symmetric(
+              horizontal: SizeConfig.safeBlockHorizontal * 4,
+              vertical: SizeConfig.safeBlockVertical * 1.5,
+            ),
             child: Text(
               widget.event.about!,
               textAlign: TextAlign.left,
               style: TextStyle(
                 color: Colors.white,
-                fontSize: SizeConfig.baseFontSize * 4.4,
+                fontSize: SizeConfig.baseFontSize * 4,
               ),
             ),
           ),

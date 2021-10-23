@@ -23,36 +23,23 @@ class _EventsScreenState extends State<EventsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomLeft,
-          colors: [
-            Colors.blue.shade900,
-            Color(0XFF792adc),
-            Color(0XFF792adc),
-          ],
-        ),
-      ),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        appBar: AppBar(
-          title: Text(
-            "Events",
-            style: TextStyle(
-              color: Colors.white,
-            ),
+    return Scaffold(
+      backgroundColor: Color(0XFF17181C),
+      appBar: AppBar(
+        title: Text(
+          "Events",
+          style: TextStyle(
+            color: Colors.white,
           ),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
         ),
-        body: ListView.builder(
-          itemCount: eventsList.length,
-          itemBuilder: (BuildContext context, int index) {
-            return EventCard(eventsList[index]);
-          },
-        ),
+        backgroundColor: Colors.transparent,
+        elevation: 0,
+      ),
+      body: ListView.builder(
+        itemCount: eventsList.length,
+        itemBuilder: (BuildContext context, int index) {
+          return EventCard(eventsList[index]);
+        },
       ),
     );
   }

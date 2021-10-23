@@ -1,18 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:mlsa_amu/api/api.dart';
 import 'package:mlsa_amu/models/repo_details.dart';
-import 'package:mlsa_amu/utils/size_config.dart';
 import 'package:mlsa_amu/widgets/user_details_card.dart';
 
-class StarredUserScreen extends StatefulWidget {
+class StargazersScreen extends StatefulWidget {
   final String starUrl;
-  const StarredUserScreen(this.starUrl, {Key? key}) : super(key: key);
+  const StargazersScreen(this.starUrl, {Key? key}) : super(key: key);
 
   @override
-  _StarredUserScreenState createState() => _StarredUserScreenState();
+  _StargazersScreenState createState() => _StargazersScreenState();
 }
 
-class _StarredUserScreenState extends State<StarredUserScreen> {
+class _StargazersScreenState extends State<StargazersScreen> {
   List<UserDetails> usersDetailList = [];
 
   @override
@@ -42,7 +41,7 @@ class _StarredUserScreenState extends State<StarredUserScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFF17181C),
+      backgroundColor: Color(0XFF0B0B0D),
       appBar: AppBar(
         title: Text(
           "Stargazers",
@@ -50,21 +49,14 @@ class _StarredUserScreenState extends State<StarredUserScreen> {
             color: Colors.white,
           ),
         ),
-        backgroundColor: Colors.transparent,
+        backgroundColor: Color(0XFF17181C),
         elevation: 0,
       ),
       body: SingleChildScrollView(
         physics: BouncingScrollPhysics(),
         child: Column(
           children: [
-            SizedBox(height: 20),
-            ListView.separated(
-              separatorBuilder: (_, __) => SizedBox(
-                height: 35,
-              ),
-              padding: EdgeInsets.symmetric(
-                horizontal: SizeConfig.safeBlockHorizontal * 4,
-              ),
+            ListView.builder(
               physics: NeverScrollableScrollPhysics(),
               shrinkWrap: true,
               itemCount: usersDetailList.length,

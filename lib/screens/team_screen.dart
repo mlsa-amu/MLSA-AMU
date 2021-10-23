@@ -25,43 +25,30 @@ class _TeamScreenState extends State<TeamScreen> {
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      decoration: BoxDecoration(
-        gradient: LinearGradient(
-          begin: Alignment.topLeft,
-          end: Alignment.bottomLeft,
-          colors: [
-            Colors.blue.shade900,
-            Color(0XFF792adc),
-            Color(0XFF792adc),
-          ],
-        ),
-      ),
-      child: Scaffold(
-        appBar: AppBar(
-          toolbarHeight: SizeConfig.appBarHeight,
-          title: Text(
-            'Team',
-            style: TextStyle(color: Colors.white),
-          ),
-          backgroundColor: Colors.transparent,
-          elevation: 0,
+    return Scaffold(
+      backgroundColor: Color(0XFF17181C),
+      appBar: AppBar(
+        toolbarHeight: SizeConfig.appBarHeight,
+        title: Text(
+          'Team',
+          style: TextStyle(color: Colors.white),
         ),
         backgroundColor: Colors.transparent,
-        body: SingleChildScrollView(
-          physics: BouncingScrollPhysics(),
-          child: Column(
-            children: [
-              ListView.builder(
-                shrinkWrap: true,
-                physics: NeverScrollableScrollPhysics(),
-                itemCount: membersList.length,
-                itemBuilder: (context, index) {
-                  return MemberDetailsCard(memberdetails: membersList[index]);
-                },
-              ),
-            ],
-          ),
+        elevation: 0,
+      ),
+      body: SingleChildScrollView(
+        physics: BouncingScrollPhysics(),
+        child: Column(
+          children: [
+            ListView.builder(
+              shrinkWrap: true,
+              physics: NeverScrollableScrollPhysics(),
+              itemCount: membersList.length,
+              itemBuilder: (context, index) {
+                return MemberDetailsCard(memberdetails: membersList[index]);
+              },
+            ),
+          ],
         ),
       ),
     );

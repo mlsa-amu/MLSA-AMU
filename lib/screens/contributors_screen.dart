@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:mlsa_amu/api/api.dart';
 import 'package:mlsa_amu/models/repo_details.dart';
-import 'package:mlsa_amu/screens/starred_user_screen.dart';
+import 'package:mlsa_amu/screens/stargazers_screen.dart';
 import 'package:mlsa_amu/utils/size_config.dart';
 import 'package:mlsa_amu/widgets/contributors_header.dart';
 import 'package:mlsa_amu/widgets/user_details_card.dart';
@@ -26,11 +26,15 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
     API().fetchRepoDetails().then((value) async {
       if (value != null) {
         repoDetails = RepoDetailsModel.fromJson(value);
-        await API().fetchUsersDetails(repoDetails.contributorsUrl!).then((value) async {
+        await API()
+            .fetchUsersDetails(repoDetails.contributorsUrl!)
+            .then((value) async {
           if (value != null) {
             await value.forEach((item) async {
               UserDetails contributorsModel = UserDetails.fromMap(item);
-              await API().fetchUsersDetails(contributorsModel.apiUrl!).then((value) {
+              await API()
+                  .fetchUsersDetails(contributorsModel.apiUrl!)
+                  .then((value) {
                 if (value != null) {
                   contributorsModel.bio = value['bio'];
                   setState(() {
@@ -40,15 +44,17 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
               });
             });
           }
+          setState(() {});
         });
       }
+      setState(() {});
     });
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Color(0XFF17181C),
+      backgroundColor: Color(0XFF0B0B0D),
       appBar: AppBar(
         title: Text(
           "Contributors",
@@ -56,7 +62,8 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
             color: Colors.white,
           ),
         ),
-        backgroundColor: Color(0XFF0B0B0D),
+        // backgroundColor: Color(0XFF0B0B0D),
+        backgroundColor: Colors.transparent,
         elevation: 0,
       ),
       body: repoDetails.contributorsList == null
@@ -67,7 +74,6 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   Container(
-                    color: Color(0XFF0B0B0D),
                     padding: EdgeInsets.symmetric(
                       vertical: SizeConfig.safeBlockVertical * 4,
                       horizontal: SizeConfig.safeBlockHorizontal * 4,
@@ -117,7 +123,8 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => StarredUserScreen(repoDetails.starUrl!),
+                                      builder: (context) => StargazersScreen(
+                                          repoDetails.starUrl!),
                                     ),
                                   );
                                 },
@@ -145,11 +152,12 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
                       ],
                     ),
                   ),
-                  Padding(
-                    padding: EdgeInsets.only(
-                      top: SizeConfig.safeBlockVertical * 2,
-                      left: SizeConfig.safeBlockHorizontal * 4,
-                      right: SizeConfig.safeBlockHorizontal * 4,
+                  Container(
+                    color: Color(0XFF17181C),
+                    width: double.infinity,
+                    padding: EdgeInsets.symmetric(
+                      vertical: SizeConfig.safeBlockVertical * 2,
+                      horizontal: SizeConfig.safeBlockHorizontal * 4,
                     ),
                     child: Text(
                       "Contributors",
@@ -171,14 +179,7 @@ class _ContributorsScreenState extends State<ContributorsScreen> {
                             ),
                           ),
                         )
-                      : ListView.separated(
-                          separatorBuilder: (_, __) => SizedBox(
-                            height: 30,
-                          ),
-                          padding: EdgeInsets.symmetric(
-                            vertical: SizeConfig.safeBlockVertical * 4,
-                            horizontal: SizeConfig.safeBlockHorizontal * 4,
-                          ),
+                      : ListView.builder(
                           shrinkWrap: true,
                           physics: NeverScrollableScrollPhysics(),
                           itemCount: repoDetails.contributorsList!.length,
