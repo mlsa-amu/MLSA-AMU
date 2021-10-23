@@ -45,9 +45,19 @@ class Service {
 
   Future addDeviceToken() async {
     String? token = await FirebaseMessaging.instance.getToken();
-    FirebaseFirestore.instance.collection('users').add(
-      {
-        'deviceToken': token,
+    FirebaseFirestore.instance
+        .collection('users')
+        .where('deviceToken', isEqualTo: token)
+        .get()
+        .then(
+      (value) async {
+        if (value.size == 0) {
+          await FirebaseFirestore.instance.collection('users').add(
+            {
+              'deviceToken': token,
+            },
+          );
+        }
       },
     );
   }
