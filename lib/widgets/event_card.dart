@@ -7,7 +7,20 @@ import 'package:mlsa_amu/utils/size_config.dart';
 class EventCard extends StatelessWidget {
   final EventsModel event;
   EventCard(this.event);
-
+  final List<String> months = [
+    "Jan",
+    "Feb",
+    "Mar",
+    "Apr",
+    "May",
+    "Jun",
+    "Jul",
+    "Aug",
+    "Sep",
+    "Oct",
+    "Nov",
+    "Dec"
+  ];
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -52,7 +65,7 @@ class EventCard extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
                     Text(
-                      'Oct',
+                      months[event.startDate!.month - 1],
                       style: TextStyle(
                         color: Colors.black,
                         fontWeight: FontWeight.bold,
@@ -60,7 +73,7 @@ class EventCard extends StatelessWidget {
                       ),
                     ),
                     Text(
-                      '2021',
+                      event.startDate!.year.toString(),
                       style: TextStyle(
                         color: Colors.black,
                         fontSize: SizeConfig.baseFontSize * 3,

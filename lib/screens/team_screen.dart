@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mlsa_amu/models/team_details.dart';
-import 'package:mlsa_amu/services/team_service.dart';
+import 'package:mlsa_amu/services/service.dart';
 import 'package:mlsa_amu/utils/size_config.dart';
 import 'package:mlsa_amu/widgets/member_details_card.dart';
 
@@ -16,7 +16,7 @@ class _TeamScreenState extends State<TeamScreen> {
   @override
   void initState() {
     super.initState();
-    TeamService().fetchTeamDetails().then((value) async {
+    Service().fetchTeamDetails().then((value) async {
       setState(() {
         membersList = value;
       });
