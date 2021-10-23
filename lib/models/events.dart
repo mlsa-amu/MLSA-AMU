@@ -1,10 +1,12 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class EventsModel {
   String? image;
   String? title;
   String? subTitle;
   String? about;
-  String? startDate;
-  String? endDate; 
+  DateTime? startDate;
+  DateTime? endDate;
   List? winners;
   List? organizers;
   List? sponsors;
@@ -20,7 +22,7 @@ class EventsModel {
     required this.startDate,
     required this.endDate,
   });
-    Map toMap(EventsModel event) {
+  Map toMap(EventsModel event) {
     Map<String, dynamic> teamMap = Map<String, dynamic>();
     teamMap['title'] = event.title;
     teamMap['subtitle'] = event.subTitle;
@@ -29,12 +31,13 @@ class EventsModel {
     teamMap['winners'] = event.winners;
     teamMap['organizers'] = event.organizers;
     teamMap['sponsors'] = event.sponsors;
-    teamMap['startDate'] = event.startDate;
-    teamMap['endDate'] = event.endDate;
+    teamMap['startDate'] = Timestamp.fromMicrosecondsSinceEpoch(startDate!.microsecondsSinceEpoch);
+    teamMap['endDate'] = Timestamp.fromMicrosecondsSinceEpoch(endDate!.microsecondsSinceEpoch);
     return teamMap;
   }
 
   EventsModel.fromMap(doc) {
+    Timestamp time;
     title = doc['title'];
     subTitle = doc['subtitle'];
     about = doc['about'];
@@ -42,7 +45,10 @@ class EventsModel {
     winners = doc['winners'];
     organizers = doc['organizers'];
     sponsors = doc['sponsors'];
-    startDate = doc['startDate'];
-    endDate = doc['endDate'];
+    time = doc['startDate'];
+    startDate =
+        DateTime.fromMicrosecondsSinceEpoch(time.microsecondsSinceEpoch);
+    time = doc['endDate'];
+    endDate = DateTime.fromMicrosecondsSinceEpoch(time.microsecondsSinceEpoch);
   }
 }

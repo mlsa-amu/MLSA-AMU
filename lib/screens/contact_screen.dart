@@ -1,6 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
+import 'package:mlsa_amu/services/service.dart';
 import 'package:mlsa_amu/utils/size_config.dart';
 import 'package:url_launcher/url_launcher.dart';
 
@@ -134,43 +135,46 @@ class ContactScreen extends StatelessWidget {
                   child: Column(
                     children: <Widget>[
                       Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          crossAxisAlignment: CrossAxisAlignment.center,
-                          children: [
-                            Text(
-                              "Your Feedback",
-                              textAlign: TextAlign.left,
-                              style: TextStyle(
-                                fontSize: SizeConfig.baseFontSize * 5.5,
-                                fontWeight: FontWeight.bold,
-                                color: Colors.white,
-                              ),
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(
+                            "Your Feedback",
+                            textAlign: TextAlign.left,
+                            style: TextStyle(
+                              fontSize: SizeConfig.baseFontSize * 5.5,
+                              fontWeight: FontWeight.bold,
+                              color: Colors.white,
                             ),
-                          ]),
+                          ),
+                        ],
+                      ),
                       SizedBox(
                         height: SizeConfig.screenHeight * 0.01,
                       ),
-                      Row(children: [
-                        Expanded(
-                          child: Container(
-                            height: SizeConfig.screenHeight * 0.15,
-                            child: TextField(
-                              controller: feedbackController,
-                              maxLines: 4,
-                              decoration: const InputDecoration(
-                                fillColor: Colors.white,
-                                filled: true,
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.all(
-                                    Radius.circular(20),
+                      Row(
+                        children: [
+                          Expanded(
+                            child: Container(
+                              height: SizeConfig.screenHeight * 0.15,
+                              child: TextField(
+                                controller: feedbackController,
+                                maxLines: 4,
+                                decoration: const InputDecoration(
+                                  fillColor: Colors.white,
+                                  filled: true,
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.all(
+                                      Radius.circular(20),
+                                    ),
                                   ),
+                                  hintText: 'Feedback...',
                                 ),
-                                hintText: 'Feedback...',
                               ),
                             ),
-                          ),
-                        )
-                      ]),
+                          )
+                        ],
+                      ),
                       SizedBox(
                         height: SizeConfig.screenHeight * 0.01,
                       ),
@@ -179,28 +183,42 @@ class ContactScreen extends StatelessWidget {
                         crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           TextButton(
-                              onPressed: () {
-                                _launchUrl("mailto:" +
-                                    email +
-                                    "?subject=Feedback&body=" +
-                                    feedbackController.toString());
-                              }, // TODO: Need Fix for Submit Method
-                              style: TextButton.styleFrom(
-                                  padding: EdgeInsets.symmetric(
-                                      horizontal:
-                                          SizeConfig.safeBlockHorizontal * 4),
-                                  backgroundColor: Colors.cyan,
-                                  shape: const RoundedRectangleBorder(
-                                    borderRadius:
-                                        BorderRadius.all(Radius.circular(10)),
-                                  )),
-                              child: Text(
-                                "SUBMIT",
-                                style: TextStyle(
-                                    color: Colors.white,
-                                    fontWeight: FontWeight.bold,
-                                    fontSize: SizeConfig.baseFontSize * 4.5),
-                              ))
+                            onPressed: () {
+                              Service()
+                                  .submitFeedback(feedbackController.text)
+                                  .then(
+                                (value) {
+                                  _launchUrl(
+                                    "mailto:" +
+                                        email +
+                                        "?subject=Feedback&body=" +
+                                        feedbackController.toString(),
+                                  ).then(
+                                    (value) => feedbackController.clear(),
+                                  );
+                                },
+                              );
+                            }, // TODO: Need Fix for Submit Method
+                            style: TextButton.styleFrom(
+                              padding: EdgeInsets.symmetric(
+                                horizontal: SizeConfig.safeBlockHorizontal * 4,
+                              ),
+                              backgroundColor: Colors.cyan,
+                              shape: const RoundedRectangleBorder(
+                                borderRadius: BorderRadius.all(
+                                  Radius.circular(10),
+                                ),
+                              ),
+                            ),
+                            child: Text(
+                              "SUBMIT",
+                              style: TextStyle(
+                                color: Colors.white,
+                                fontWeight: FontWeight.bold,
+                                fontSize: SizeConfig.baseFontSize * 4.5,
+                              ),
+                            ),
+                          )
                         ],
                       )
                     ],

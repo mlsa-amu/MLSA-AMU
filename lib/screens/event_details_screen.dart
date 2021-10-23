@@ -13,7 +13,6 @@ class EventDetailsPage extends StatefulWidget {
 
 class _EventDetailsPageState extends State<EventDetailsPage> {
   bool isExpanded1 = false, isExpanded2 = false, isExpanded3 = false;
-
   final GlobalKey expansionTileKey = GlobalKey();
 
   @override
@@ -76,7 +75,7 @@ class _EventDetailsPageState extends State<EventDetailsPage> {
             padding: EdgeInsets.fromLTRB(SizeConfig.safeBlockHorizontal * 4.2,
                 0, 0, SizeConfig.safeBlockHorizontal * 6.6),
             child: Text(
-              widget.event.startDate! + " - " + widget.event.endDate!,
+              "${widget.event.startDate!.day} / ${widget.event.startDate!.month} / ${widget.event.startDate!.year} - ${widget.event.endDate!.day} / ${widget.event.endDate!.month} / ${widget.event.endDate!.year}",
               textAlign: TextAlign.left,
               style: TextStyle(
                 color: Colors.white,
