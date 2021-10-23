@@ -31,13 +31,12 @@ class EventsModel {
     teamMap['winners'] = event.winners;
     teamMap['organizers'] = event.organizers;
     teamMap['sponsors'] = event.sponsors;
-    teamMap['startDate'] = Timestamp.fromMicrosecondsSinceEpoch(startDate!.microsecondsSinceEpoch);
-    teamMap['endDate'] = Timestamp.fromMicrosecondsSinceEpoch(endDate!.microsecondsSinceEpoch);
+    teamMap['startDate'] = event.startDate;
+    teamMap['endDate'] = event.endDate;
     return teamMap;
   }
 
   EventsModel.fromMap(doc) {
-    Timestamp time;
     title = doc['title'];
     subTitle = doc['subtitle'];
     about = doc['about'];
@@ -45,10 +44,7 @@ class EventsModel {
     winners = doc['winners'];
     organizers = doc['organizers'];
     sponsors = doc['sponsors'];
-    time = doc['startDate'];
-    startDate =
-        DateTime.fromMicrosecondsSinceEpoch(time.microsecondsSinceEpoch);
-    time = doc['endDate'];
-    endDate = DateTime.fromMicrosecondsSinceEpoch(time.microsecondsSinceEpoch);
+    startDate = doc['startDate'].toDate();
+    endDate = doc['endDate'].toDate();
   }
 }
